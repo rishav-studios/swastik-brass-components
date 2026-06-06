@@ -10,6 +10,16 @@
       ]
     }
   },
-  "include": ["src", "components", "lib", "hooks", "constants", "../types"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "*.ts",
+    "src/company.schema.ts",
+    "src/enquiry.schema.ts",
+    "src/facility.schema.ts",
+    "src/product.schema.ts",
+    "src/sector.schema.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

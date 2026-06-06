@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "@swastik/ui/styles/globals.css";
+
+@source "../node_modules/@swastik/ui";

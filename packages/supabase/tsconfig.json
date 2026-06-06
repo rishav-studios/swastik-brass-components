@@ -3,13 +3,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "strictNullChecks": true,
-    "baseUrl": ".",
-    "paths": {
-      "@swastik/ui/*": [
-        "./src/*"
-      ]
-    }
+    "baseUrl": "."
   },
-  "include": ["src", "components", "lib", "hooks", "constants", "../types"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

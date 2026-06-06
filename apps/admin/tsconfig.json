@@ -9,9 +9,7 @@
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
+      "@/*": ["./*"],
       "@swastik/ui/*": ["../../packages/ui/src/*"]
     }
   },
