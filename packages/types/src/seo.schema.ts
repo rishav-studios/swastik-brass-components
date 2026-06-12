@@ -1,7 +1,6 @@
-import { baseSchema } from "./base.schema";
 import { z } from "zod";
 
-export const seoSchema = baseSchema.extend({
+export const seoSchema = z.object({
     meta_title: z.string().min(1, "Meta title is required"),
     meta_description: z.string().min(1, "Meta description is required"),
     keywords: z.array(z.string()).optional(),

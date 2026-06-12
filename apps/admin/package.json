@@ -11,12 +11,16 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
     "@swastik/supabase": "workspace:*",
     "@swastik/types": "workspace:*",
     "@swastik/ui": "workspace:*",
+    "motion": "^12.40.0",
     "next": "16.2.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.77.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@swastik/eslint-config": "workspace:*",

@@ -145,3 +145,8 @@
     filter: brightness(0.9);
   }
 }
+
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}

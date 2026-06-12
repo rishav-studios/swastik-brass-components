@@ -1,34 +1,45 @@
 'use client';
 
-import React from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { Button } from '@swastik/ui/components/shadcn/button'
-import { icons } from '@swastik/ui/constants/icon'
-import { useSidebar } from '@swastik/ui/components/shadcn/sidebar'
-import { Avatar, AvatarImage, AvatarFallback } from '@swastik/ui/components/shadcn/avatar'
+import { createBrowserSupabaseClient } from '@swastik/supabase/client';
+import { Avatar, AvatarFallback, AvatarImage } from '@swastik/ui/components/shadcn/avatar';
+import { Button } from '@swastik/ui/components/shadcn/button';
 import {
     DropdownMenu,
-    DropdownMenuTrigger,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
-} from '@swastik/ui/components/shadcn/dropdown-menu'
+    DropdownMenuTrigger,
+} from '@swastik/ui/components/shadcn/dropdown-menu';
+import { useSidebar } from '@swastik/ui/components/shadcn/sidebar';
 import { LinkTag } from '@swastik/ui/components/shared/LinkTag';
+import { icons } from '@swastik/ui/constants/icon';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
     const { toggleSidebar } = useSidebar();
     const router = useRouter();
+    const [user, setUser] = useState<any>(null);
 
-    const handleLogout = () => {
-        // Implement logout logic here (e.g. Supabase signOut)
-        console.log("User logged out successfully");
+    const supabase = createBrowserSupabaseClient();
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const { data } = await supabase.auth.getUser();
+            setUser(data.user);
+        };
+        fetchUser();
+    }, [supabase]);
+
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
+        router.refresh();
         router.push("/login");
     };
 
     return (
-        <nav className='w-full h-16 bg-white border-b px-6 flex items-center justify-between'>
+        <nav className='fixed h-16 bg-white border-b px-6 flex items-center justify-between w-[calc(100%-16rem)] z-999'>
             <div className="flex items-center gap-4">
                 <Button
                     onClick={toggleSidebar}
@@ -40,7 +51,7 @@ const Navbar = () => {
                 </Button>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 z-10">
                 <DropdownMenu>
                     <DropdownMenuTrigger className="focus:outline-none cursor-pointer flex justify-center items-center gap-2 hover:bg-accent/50 p-2 rounded-md">
                         <Avatar className="h-9 w-9 border border-gray-100 hover:opacity-90 transition-opacity">
@@ -51,7 +62,7 @@ const Navbar = () => {
                         </Avatar>
                         <div className="flex flex-col space-y-0.5 text-left">
                             <span className="text-sm font-semibold text-gray-800 leading-none">Admin</span>
-                            <span className="text-xs text-gray-500 font-light truncate max-w-[140px]">admin@swastikbrass.com</span>
+                            <span className="text-xs text-gray-500 font-light truncate max-w-[140px]">{user?.email}</span>
                         </div>
                     </DropdownMenuTrigger>
 
@@ -65,7 +76,7 @@ const Navbar = () => {
                             </Avatar>
                             <div className="flex flex-col space-y-0.5 text-left">
                                 <span className="text-sm font-semibold text-gray-800 leading-none">Admin</span>
-                                <span className="text-xs text-gray-500 font-light truncate max-w-[140px]">admin@swastikbrass.com</span>
+                                <span className="text-xs text-gray-500 font-light truncate max-w-[140px]">{user?.email}</span>
                             </div>
                         </DropdownMenuLabel>
 

@@ -14,5 +14,3 @@ export function createBrowserSupabaseClient() {
   return createBrowserClient<Database>(supabaseUrl, supabaseAnonKey);
 }
 
-// Standard alias for browser components
-export const createClient = createBrowserSupabaseClient;

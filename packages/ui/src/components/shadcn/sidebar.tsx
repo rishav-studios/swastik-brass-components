@@ -1,11 +1,11 @@
 "use client"
 
-import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
+import * as React from "react"
 
-import { Input } from "@swastik/ui/components/shadcn/input"
 import { Button } from "@swastik/ui/components/shadcn/button"
+import { Input } from "@swastik/ui/components/shadcn/input"
 import { Separator } from "@swastik/ui/components/shadcn/separator"
 import {
   Sheet,
@@ -20,14 +20,14 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@swastik/ui/components/shadcn/tooltip"
-import { PanelLeftIcon } from "lucide-react"
-import { cn } from "@swastik/ui/lib/utils"
 import { useIsMobile } from "@swastik/ui/hooks/use-mobile"
+import { cn } from "@swastik/ui/lib/utils"
+import { PanelLeftIcon } from "lucide-react"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
 const SIDEBAR_WIDTH = "16rem"
-const SIDEBAR_WIDTH_MOBILE = "18rem"
+const SIDEBAR_WIDTH_MOBILE = "16rem"
 const SIDEBAR_WIDTH_ICON = "3rem"
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
@@ -698,5 +698,6 @@ export {
   SidebarRail,
   SidebarSeparator,
   SidebarTrigger,
-  useSidebar,
+  useSidebar
 }
+

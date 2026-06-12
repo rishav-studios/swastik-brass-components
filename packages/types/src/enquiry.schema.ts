@@ -1,5 +1,5 @@
-import { baseSchema, emailSchema, phoneNumberSchema } from "./base.schema";
 import { z } from "zod";
+import { baseSchema, emailSchema, phoneNumberSchema } from "./base.schema";
 
 export const statusEnums = [
     "NEW",
@@ -28,6 +28,12 @@ export const quoteRequestSchema = baseSchema.extend({
 
 export type QuoteRequest = z.infer<typeof quoteRequestSchema>;
 
+export const createQuoteRequestSchema = quoteRequestSchema.omit({
+    id: true,
+    created_at: true
+})
+export type CreateQuoteRequest = z.infer<typeof createQuoteRequestSchema>
+
 export const enquirySchema = baseSchema.extend({
     first_name: z.string().min(1, "First name is required"),
     last_name: z.string().min(1, "Last name is required"),
@@ -43,3 +49,10 @@ export type Enquiry = z.infer<typeof enquirySchema>;
 // Alias for convenience/safety to avoid typo issues
 export const inquirySchema = enquirySchema;
 export type Inquiry = Enquiry;
+
+export const createInquirySchema = enquirySchema.omit({
+    id: true,
+    created_at: true
+})
+
+export type CreateInquiry = z.infer<typeof createInquirySchema>

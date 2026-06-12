@@ -13,13 +13,13 @@ import {
     SidebarMenuItem,
     useSidebar
 } from "@swastik/ui/components/shadcn/sidebar";
+import { LinkTag } from "@swastik/ui/components/shared/LinkTag";
+import { Text } from "@swastik/ui/components/typography/Text";
+import { icons } from "@swastik/ui/constants/icon";
 import { cn } from "@swastik/ui/lib/utils";
 import Image from 'next/image';
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from 'react';
-import { LinkTag } from "@swastik/ui/components/shared/LinkTag";
-import { icons } from "@swastik/ui/constants/icon";
-import { Text } from "@swastik/ui/components/typography/Text";
 
 const sidebarGroups = [
     {
@@ -29,18 +29,20 @@ const sidebarGroups = [
         ]
     },
     {
-        label: "Sector & Products",
+        label: "Catalogue",
         items: [
-            { label: 'Products', icon: icons.product, href: '/products' },
-            { label: 'Sectors', icon: icons.sector, href: '/sectors' }
+            { label: 'Sectors', icon: icons.sector, href: '/catalogue/sectors' },
+            { label: 'Materials', icon: icons.sector, href: '/catalogue/materials' },
+            { label: 'Grades', icon: icons.sector, href: '/catalogue/materials/grades' },
+            { label: 'Products', icon: icons.product, href: '/catalogue/products' },
         ]
     },
     {
         label: "Facilities",
         items: [
             { label: 'Facility', icon: icons.facility, href: '/facilities' },
-            { label: 'Facility Group', icon: icons.facilityGroup, href: '/facilities-groups' },
-            { label: 'Facility Category', icon: icons.facilityCategory, href: '/facilities-categories' }
+            { label: 'Facility Group', icon: icons.facilityGroup, href: '/facilities/group' },
+            { label: 'Facility Category', icon: icons.facilityCategory, href: '/facilities/categories' }
         ]
     },
     {
@@ -51,13 +53,20 @@ const sidebarGroups = [
         ]
     },
     {
+        label: "Blogs",
+        items: [
+            { label: 'Categories', icon: icons.blogCategory, href: '/blogs/categories' },
+            { label: 'Posts', icon: icons.blogPost, href: '/blogs/posts' },
+        ]
+    },
+    {
         label: "Company",
         items: [
             { label: 'General', icon: icons.companyGeneral, href: '/company/general' },
             { label: 'Statistics', icon: icons.companyStatistics, href: '/company/statistics' },
             { label: 'Journey', icon: icons.companyJourney, href: '/company/journey' }
         ]
-    }
+    },
 ];
 
 export default function AppSidebar() {
@@ -121,7 +130,7 @@ export default function AppSidebar() {
                                 </CollapsibleTrigger>
                             </SidebarGroupLabel>
                             <CollapsibleContent>
-                                <SidebarMenu className={cn("relative ", state === "expanded" && "pl-3")}>
+                                <SidebarMenu className={cn("relative space-y-0.5", state === "expanded" && "pl-3")}>
                                     {
                                         state === "expanded" &&
                                         <div className="absolute left-2 top-0 h-full w-px bg-sidebar-ring" />

@@ -1,9 +1,9 @@
 "use client";
 
-import { PropsWithChildren, AnchorHTMLAttributes } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import { cn } from "@swastik/ui/lib/utils";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { AnchorHTMLAttributes, PropsWithChildren } from "react";
 
 type LinkVariant = | "button-outline" | "button" | "custom" | "button-brand";
 
@@ -16,7 +16,7 @@ interface LinkTagProps extends PropsWithChildren<AnchorHTMLAttributes<HTMLAnchor
 // Atomic style constants for better maintainability
 const UNDERLINE_BASE = "relative transition-all duration-500 after:absolute after:left-0 after:right-0 after:-bottom-1.5 after:h-[1.5px] after:w-full after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-500 after:will-change-transform after:transform-gpu";
 const UNDERLINE_HOVER = "hover:after:origin-left hover:after:scale-x-100";
-const BUTTON_BASE = "h-12 px-6 rounded-full flex items-center justify-center transition-all duration-500 w-max";
+const BUTTON_BASE = "h-10 px-4 rounded-md flex items-center justify-center transition-all duration-500 w-max gap-2";
 
 const variantClasses: Record<LinkVariant, { base?: string; hover?: string; active?: string }> = {
 
@@ -31,7 +31,7 @@ const variantClasses: Record<LinkVariant, { base?: string; hover?: string; activ
         active: "scale-[0.98]",
     },
     "button-brand": {
-        base: `${BUTTON_BASE} bg-brand text-white`,
+        base: `${BUTTON_BASE} bg-primary text-white`,
         hover: "hover:opacity-90",
         active: "scale-[0.98]",
     },

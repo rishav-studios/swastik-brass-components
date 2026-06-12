@@ -11,20 +11,28 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
     "@swastik/supabase": "workspace:*",
     "@swastik/types": "workspace:*",
     "@swastik/ui": "workspace:*",
+    "lenis": "^1.3.23",
+    "motion": "^12.40.0",
     "next": "16.2.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.77.0",
+    "three": "^0.184.0"
   },
   "devDependencies": {
     "@swastik/eslint-config": "workspace:*",
     "@swastik/typescript-config": "workspace:*",
+    "@tailwindcss/postcss": "^4.3.0",
     "@types/node": "^22.15.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
+    "@types/three": "^0.184.1",
     "eslint": "^9.39.1",
+    "tailwindcss": "^4",
     "typescript": "5.9.2"
   }
 }
