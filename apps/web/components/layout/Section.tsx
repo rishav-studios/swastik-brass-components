@@ -7,7 +7,7 @@ type SectionProps = PropsWithChildren<{
 
 const Section = ({ className, children, ...props }: SectionProps) => {
     return (
-        <section {...props} className={cn("py-16 lg:py-24 min-h-dvh", className)}>
+        <section {...props} className={cn("py-16 lg:py-24 min-h-dvh relative", className)}>
             {children}
         </section>
     );

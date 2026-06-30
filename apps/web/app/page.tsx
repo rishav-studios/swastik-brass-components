@@ -1,16 +1,18 @@
 import HomeAbout from "@/components/pages/home/about/HomeAbout"
-import Hero from "@/components/pages/home/hero/Hero"
+import HomeCTA from "@/components/pages/home/cta/HomeCTA"
+// import Hero from "@/components/pages/home/hero/Hero"
+import Hero from "@/components/pages/home/hero/Hero2"
 import HomeImpact from "@/components/pages/home/impact/HomeImpact"
 import HomeMaterials from "@/components/pages/home/materials/HomeMaterials"
-import Sectors from "@/components/pages/home/sectors/Sectors"
 import HomeQuality from "@/components/pages/home/quality/HomeQuality"
-import HomeCTA from "@/components/pages/home/cta/HomeCTA"
+import Sectors from "@/components/pages/home/sectors/SectorsSectionMain"
+
 
 const HomePage = () => {
   return (
     <div className="">
       <Hero />
-      <div className="bg-transparent h-dvh" />
+      {/* <div className="bg-transparent h-dvh" /> */}
       <HomeAbout />
       <Sectors />
       <HomeMaterials />

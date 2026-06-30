@@ -7,7 +7,7 @@ type ContainerProps = PropsWithChildren<{
 }>
 const Container = ({ children, className = "", style }: ContainerProps) => {
     return (
-        <div className={cn("container w-[90%] mx-auto", className)} style={style}>
+        <div className={cn(" w-[90%] mx-auto", className)} style={style}>
             {children}
         </div>
     )

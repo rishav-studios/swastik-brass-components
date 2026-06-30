@@ -20,7 +20,7 @@ const CERTIFICATES = [
     {
         title: "IATF 16949 Compliant",
         description: "Adhering to the stringent quality requirements of the global automotive industry supply chain.",
-        image: "/certificate-iso9001.png" // Placeholder
+        image: "/certificate-iatf16949.png"
     }
 ];
 

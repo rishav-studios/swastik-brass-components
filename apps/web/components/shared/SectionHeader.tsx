@@ -29,7 +29,8 @@ export const Description = ({ children, className = "" }: SectionHeaderProps) =>
 }
 export const Eyebrow = ({ children, className = "" }: SectionHeaderProps) => {
     return (
-        <span className={`w-max flex rounded-full mx-auto px-3 bg-primary/20 text-primary text-sm ${className}`}>
+        <span className={`w-max flex rounded-full items-center gap-2 mx-auto px-3 py-1 font-medium bg-background border border-[#D1D1D1] text-foreground text-sm z-10 ${className}`}>
+            <div className="w-1.5 h-1.5 aspect-square bg-primary" />
             {children}
         </span>
     )

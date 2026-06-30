@@ -1,10 +1,12 @@
 "use client";
 
+import Fade from "@/components/animations/Fade";
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
+import BackgroundNoise, { BackgroundLines } from "@/components/shared/BackgroundNoise";
 import ImageReveal from "@/components/shared/ImageReveal";
-import { Description, Eyebrow, Heading, SectionHeader } from "@/components/shared/SectionHeader";
-import Fade from "@/components/animations/Fade";
+import { Description, Eyebrow, SectionHeader } from "@/components/shared/SectionHeader";
+import { TextRevealOnScroll } from "@/components/shared/TextReveal";
 import { icons } from "@swastik/ui/constants/icon";
 
 const QUALITY_FEATURES = [
@@ -27,21 +29,25 @@ const QUALITY_FEATURES = [
 
 const HomeQuality = () => {
     return (
-        <Section className="bg-background relative py-24 overflow-hidden">
+        <Section className="bg-background overflow-hidden">
+            <BackgroundNoise />
+            <BackgroundLines className="w-[90%] mx-auto" />
             <Container>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    
+
                     {/* Left: Content & Features */}
                     <div className="space-y-12">
-                        <SectionHeader className="w-max space-y-4">
-                            <Eyebrow className="ml-0">quality assurance</Eyebrow>
-                            <Heading className="leading-tight">
-                                Precision down to <br />
-                                <span className="text-primary">the last micron.</span>
-                            </Heading>
-                            <Description className="text-left text-lg max-w-md mt-4">
-                                For mission-critical sectors, "close enough" is never enough. Our rigorous inspection protocols ensure every component meets exact tolerances.
-                            </Description>
+                        <SectionHeader>
+                            <Eyebrow className="ml-0 mb-6">quality assurance</Eyebrow>
+                            <TextRevealOnScroll as="h2">
+                                {`Precision down to\nthe last micron.`}
+                            </TextRevealOnScroll>
+                            <Fade delay={0.5}>
+
+                                <Description className="text-left text-lg max-w-md mt-4">
+                                    For mission-critical sectors, "close enough" is never enough. Our rigorous inspection protocols ensure every component meets exact tolerances.
+                                </Description>
+                            </Fade>
                         </SectionHeader>
 
                         <div className="space-y-8">
@@ -64,9 +70,7 @@ const HomeQuality = () => {
 
                     {/* Right: Image */}
                     <div className="relative">
-                        {/* Decorative background element */}
-                        <div className="absolute -inset-4 bg-primary/5 rounded-3xl -z-10 transform rotate-3" />
-                        
+
                         <Fade delay={0.4} threshold={0.2}>
                             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50">
                                 <ImageReveal
@@ -78,8 +82,8 @@ const HomeQuality = () => {
                                     sizes="(max-w-768px) 100vw, 50vw"
                                 />
                                 {/* Overlay to ensure text readability if needed, or just aesthetic */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                                
+                                <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+
                                 {/* Floating Badge */}
                                 <div className="absolute bottom-6 left-6 bg-background/90 backdrop-blur-md px-6 py-4 rounded-2xl border border-border/50 shadow-xl flex items-center gap-4">
                                     <icons.loader2 className="w-8 h-8 text-primary animate-spin-slow" />

@@ -1,5 +1,6 @@
 "use client";
 
+import MouseScrollAnimatedIcon from "@/components/shared/MouseScrollAnimatedIcon";
 import { motion } from "motion/react";
 
 const AboutHero = () => {
@@ -20,7 +21,7 @@ const AboutHero = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/50 to-transparent" />
 
             <div className="relative z-10 text-center px-4 max-w-5xl">
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
@@ -39,7 +40,7 @@ const AboutHero = () => {
             </div>
 
             {/* Bottom scrolling year ticker */}
-            <div className="absolute bottom-0 w-full overflow-hidden flex whitespace-nowrap opacity-10 pointer-events-none select-none mix-blend-overlay -z-0">
+            <div className="absolute bottom-0 w-full overflow-hidden flex whitespace-nowrap opacity-80 pointer-events-none select-none mix-blend-overlay">
                 <motion.div
                     animate={{ x: ["0%", "-50%"] }}
                     transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
@@ -50,20 +51,7 @@ const AboutHero = () => {
                 </motion.div>
             </div>
 
-            <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
-            >
-                <div className="w-8 h-14 border border-white/20 rounded-full flex justify-center p-2 backdrop-blur-md bg-white/5">
-                    <motion.div 
-                        animate={{ y: [0, 16, 0] }}
-                        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                        className="w-1.5 h-3 bg-primary rounded-full"
-                    />
-                </div>
-            </motion.div>
+            <MouseScrollAnimatedIcon />
         </section>
     );
 };
