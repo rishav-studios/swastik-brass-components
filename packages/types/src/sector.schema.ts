@@ -9,7 +9,6 @@ export const sectorSchema = baseSchema.extend({
     dedicated_description: z.string().nullable().optional(),
     display_order: z.number(),
     image_url: imageSchema,
-    outline_image_url: imageSchema.nullable().optional(),
     cover_image_url: imageSchema,
     seo_metadata: seoSchema
 });

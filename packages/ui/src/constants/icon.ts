@@ -1,9 +1,10 @@
-import { AlertCircle, ArrowDown, ArrowRight, Building2, ChartPie, CheckCircle2, ChevronDown, CirclePile, CirclePlus, Database, Dna, Edit3, Ellipsis, ExternalLink, Eye, EyeOff, Factory, FileCheck2, FileText, FlaskConical, Globe, GripVertical, Group, HandCoins, Layers2, LayoutDashboard, LayoutList, LinkIcon, Loader2, Lock, LogOut, Mail, MapPin, Medal, MessageCircleQuestionMark, MessageSquareDot, PanelLeft, Phone, Puzzle, Route, Settings, ShieldCheck, StickyNotePlus, StickyNotes, Trash2, User, X } from "lucide-react";
+import { AlertCircle, ArrowDown, ArrowLeft, ArrowRight, Building2, Car, ChartPie, Check, CheckCircle2, ChevronDown, CirclePile, CirclePlus, Database, Dna, Download, Edit3, Ellipsis, ExternalLink, Eye, EyeOff, Factory, FileCheck2, FileText, Flame, FlaskConical, Globe, GripVertical, Group, HandCoins, Layers2, LayoutDashboard, LayoutList, LinkIcon, Loader2, Lock, LogOut, Mail, MapPin, Medal, Menu, MessageCircleQuestionMark, MessageSquareDot, Package, PanelLeft, Phone, PlaneTakeoff, Puzzle, Route, Settings, ShieldCheck, Star, StickyNotePlus, StickyNotes, TrainFront, Trash2, UploadCloud, User, X } from "lucide-react";
 
 export const icons = {
     dashboard: LayoutDashboard,
     x: X,
     ellipsis: Ellipsis,
+    menu: Menu,
 
     settings: Settings,
     sector: Factory,
@@ -67,7 +68,27 @@ export const icons = {
     linkIcon: LinkIcon,
     fileCheck2: FileCheck2,
     phone: Phone,
-    mapPin: MapPin
+    mapPin: MapPin,
+    uploadCloud: UploadCloud,
+    trash: Trash2,
+
+    shield: ShieldCheck,
+    package: Package,
+    arrowLeft: ArrowLeft,
+    building2: Building2,
+
+    star: Star,
+
+    download: Download,
+
+    check: Check,
+
+    plane: PlaneTakeoff,
+    train: TrainFront,
+    car: Car,
+    flame: Flame
+
+
 }
 
 export { type Icon } from "lucide-react";
