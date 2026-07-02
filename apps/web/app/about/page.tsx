@@ -1,21 +1,15 @@
-import AboutCertificates from "@/components/pages/about/AboutCertificates";
-import AboutFounder from "@/components/pages/about/AboutFounder";
-import AboutHero from "@/components/pages/about/AboutHero";
-import AboutJourney from "@/components/pages/about/AboutJourney";
-import AboutMissionVision from "@/components/pages/about/AboutMissionVision";
-import AboutOverview from "@/components/pages/about/AboutOverview";
-import HomeCTA from "@/components/pages/home/cta/HomeCTA";
 
 const AboutPage = () => {
     return (
-        <div className="bg-background min-h-screen">
-            <AboutHero />
+        <div className="bg-background flex items-center justify-center min-h-screen">
+            <h1 className="text-7xl font-semibold text-center text-primary">Page in progress....</h1>
+            {/* <AboutHero />
             <AboutOverview />
-            <AboutFounder />
+            <AboutStory />
             <AboutMissionVision />
             <AboutCertificates />
             <AboutJourney />
-            <HomeCTA />
+            <HomeCTA /> */}
         </div>
     )
 }

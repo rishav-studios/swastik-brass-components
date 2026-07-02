@@ -23,6 +23,7 @@ export const SECTORS_DATA: Sector[] = [
             { value: "AS9100", unit: "Certified" },
         ],
         videoSrc: "/sectors/videos/aerospace.mp4",
+        posterSrc: "/sectors/aerospace-1.webp",
     },
     {
         id: "railway",
@@ -35,6 +36,7 @@ export const SECTORS_DATA: Sector[] = [
             { value: "EN 45545", unit: "Fire Rated" },
         ],
         videoSrc: "/sectors/videos/railway.mp4",
+        posterSrc: "/sectors/railway-1.webp"
     },
     {
         id: "oil-gas",
@@ -47,6 +49,7 @@ export const SECTORS_DATA: Sector[] = [
             { value: "DZR", unit: "Brass Alloy" },
         ],
         videoSrc: "/sectors/videos/oil-gas.mp4",
+        posterSrc: "/sectors/oil-gas-1.webp"
     },
     {
         id: "automobile",
@@ -56,8 +59,9 @@ export const SECTORS_DATA: Sector[] = [
             "Fuel system inserts, EV battery terminal blocks, and precision-turned connectors supplied to OEM and Tier-1 manufacturers with IATF 16949 quality systems.",
         stats: [
             { value: "IATF", unit: "16949 Certified" },
-            { value: "12M+", unit: "Parts / Year" },
+            { value: "1M+", unit: "Parts / Year" },
         ],
         videoSrc: "/sectors/videos/automobile.mp4",
+        posterSrc: "/sectors/automobile-1.webp"
     }
 ];

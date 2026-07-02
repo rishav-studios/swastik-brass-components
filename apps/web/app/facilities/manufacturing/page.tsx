@@ -1,14 +1,9 @@
-import CoreFacilities from "@/components/pages/facilities/manufacturing/CoreFacilities";
-import ManufacturingFootprint from "@/components/pages/facilities/manufacturing/ManufacturingFootprint";
-import ManufacturingHero from "@/components/pages/facilities/manufacturing/ManufacturingHero";
-import ShopFloorGallery from "@/components/pages/facilities/manufacturing/ShopFloorGallery";
-import HomeCTA from "@/components/pages/home/cta/HomeCTA";
-import { manufacturingData } from "@/constants/facilities";
 
 export default function ManufacturingPage() {
     return (
-        <main className="w-full bg-background min-h-screen">
-            <ManufacturingHero 
+        <main className="w-full bg-background min-h-screen flex items-center justify-center">
+            <h1 className="text-7xl font-semibold text-center text-primary">Page in progress....</h1>
+            {/* <ManufacturingHero 
                 title={manufacturingData.hero.title}
                 subtitle={manufacturingData.hero.subtitle}
                 description={manufacturingData.hero.description}
@@ -28,7 +23,7 @@ export default function ManufacturingPage() {
                     </>
                 }
                 description="Our engineering team is ready to review your requirements and provide a rapid quotation."
-            />
+            /> */}
         </main>
     );
 }

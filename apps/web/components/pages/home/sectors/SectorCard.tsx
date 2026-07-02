@@ -11,6 +11,7 @@ export type Sector = {
     description: string;
     stats: { value: string; unit: string }[];
     videoSrc: string;
+    posterSrc: string;
 };
 
 type SectorCardProps = {
