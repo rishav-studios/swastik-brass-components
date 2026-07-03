@@ -104,14 +104,9 @@ export const SectorBackground = ({
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    // These three refs are the entire lerp system
-    const targetProgress = useRef(scrollProgress);
-    const currentProgress = useRef(scrollProgress);
-    const rafId = useRef<number | null>(null);
-
-    // Load detection
+    // Reset + detect load on every src change
     useEffect(() => {
-        setIsLoaded(false);
+        setIsLoaded(false); // reset so enter animation fires on sector change
 
         const video = videoRef.current;
         if (!video) return;
@@ -127,51 +122,17 @@ export const SectorBackground = ({
         return () => video.removeEventListener("loadeddata", handleLoaded);
     }, [src]);
 
-    // Step 1 — store scroll target, nothing else
-    // This useEffect does NOT seek the video directly
+    // Scrub — no lerp, Lenis already smooths the incoming scrollProgress
     useEffect(() => {
-        targetProgress.current = scrollProgress;
-    }, [scrollProgress]);
+        const video = videoRef.current;
+        if (!video || !Number.isFinite(video.duration) || !isLoaded) return;
 
-    // Step 2 — rAF loop chases target with lerp at 60fps
-    // Completely independent of React renders and scroll events
-    useEffect(() => {
-        if (!isLoaded) return;
+        const targetTime = scrollProgress * video.duration;
 
-        const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-
-        const tick = () => {
-            const video = videoRef.current;
-
-            if (video && Number.isFinite(video.duration)) {
-                // Smoothly interpolate current toward target
-                currentProgress.current = lerp(
-                    currentProgress.current,
-                    targetProgress.current,
-                    0.08
-                );
-
-                const targetTime = currentProgress.current * video.duration;
-
-                // Only seek if difference is meaningful
-                if (Math.abs(video.currentTime - targetTime) > 0.016) {
-                    video.currentTime = targetTime;
-                }
-            }
-
-            rafId.current = requestAnimationFrame(tick);
-        };
-
-        rafId.current = requestAnimationFrame(tick);
-
-        // Critical — cancel on unmount or when isLoaded changes
-        return () => {
-            if (rafId.current) {
-                cancelAnimationFrame(rafId.current);
-                rafId.current = null;
-            }
-        };
-    }, [isLoaded]);
+        if (Math.abs(video.currentTime - targetTime) > 0.041) {
+            video.currentTime = targetTime;
+        }
+    }, [scrollProgress, isLoaded]);
 
     return (
         <AnimatePresence mode="wait">
@@ -196,8 +157,6 @@ export const SectorBackground = ({
                     poster={poster}
                     className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
             </motion.div>
         </AnimatePresence>
     );
