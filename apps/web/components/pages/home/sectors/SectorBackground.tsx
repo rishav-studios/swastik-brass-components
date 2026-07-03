@@ -92,7 +92,7 @@ type SectorBackgroundProps = {
     src: string;
     sectorKey: string;
     scrollProgress: number;
-    poster?: string; // path to poster image e.g. "/posters/aerospace.webp"
+    poster?: string;
 };
 
 export const SectorBackground = ({
@@ -104,12 +104,12 @@ export const SectorBackground = ({
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
+    // These three refs are the entire lerp system
     const targetProgress = useRef(scrollProgress);
     const currentProgress = useRef(scrollProgress);
     const rafId = useRef<number | null>(null);
 
-    // Load detection — reset on every src change so new video goes
-    // through the full load cycle and triggers the enter animation
+    // Load detection
     useEffect(() => {
         setIsLoaded(false);
 
@@ -127,19 +127,24 @@ export const SectorBackground = ({
         return () => video.removeEventListener("loadeddata", handleLoaded);
     }, [src]);
 
-    // Keep lerp target in sync with scroll
+    // Step 1 — store scroll target, nothing else
+    // This useEffect does NOT seek the video directly
     useEffect(() => {
         targetProgress.current = scrollProgress;
     }, [scrollProgress]);
 
-    // Lerp rAF loop — independent of React render cycle
+    // Step 2 — rAF loop chases target with lerp at 60fps
+    // Completely independent of React renders and scroll events
     useEffect(() => {
+        if (!isLoaded) return;
+
         const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
         const tick = () => {
             const video = videoRef.current;
 
-            if (video && Number.isFinite(video.duration) && isLoaded) {
+            if (video && Number.isFinite(video.duration)) {
+                // Smoothly interpolate current toward target
                 currentProgress.current = lerp(
                     currentProgress.current,
                     targetProgress.current,
@@ -148,6 +153,7 @@ export const SectorBackground = ({
 
                 const targetTime = currentProgress.current * video.duration;
 
+                // Only seek if difference is meaningful
                 if (Math.abs(video.currentTime - targetTime) > 0.016) {
                     video.currentTime = targetTime;
                 }
@@ -158,8 +164,12 @@ export const SectorBackground = ({
 
         rafId.current = requestAnimationFrame(tick);
 
+        // Critical — cancel on unmount or when isLoaded changes
         return () => {
-            if (rafId.current) cancelAnimationFrame(rafId.current);
+            if (rafId.current) {
+                cancelAnimationFrame(rafId.current);
+                rafId.current = null;
+            }
         };
     }, [isLoaded]);
 
@@ -183,12 +193,9 @@ export const SectorBackground = ({
                     muted
                     playsInline
                     preload="auto"
-                    // Poster shows instantly while video downloads —
-                    // critical for slow connections, costs only ~40KB
                     poster={poster}
                     className="w-full h-full object-cover"
                 />
-
                 <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent pointer-events-none" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
             </motion.div>
