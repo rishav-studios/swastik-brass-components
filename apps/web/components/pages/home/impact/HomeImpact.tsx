@@ -1,6 +1,7 @@
 "use client";
 
 import Container from "@/components/layout/Container";
+import Section from "@/components/layout/Section";
 import { Eyebrow, SectionHeader } from "@/components/shared/SectionHeader";
 import { TextRevealOnScroll } from "@/components/shared/TextReveal";
 import { icons } from "@swastik/ui/constants/icon";
@@ -49,7 +50,7 @@ const HomeImpact = () => {
     const titleY = useTransform(scrollYProgress, [0, 0.1], [20, 0]);
 
     return (
-        <section
+        <Section
             ref={containerRef}
             className="h-[300vh] bg-foreground relative text-background"
         >
@@ -70,8 +71,8 @@ const HomeImpact = () => {
 
                 <Container className="relative z-10">
                     <SectionHeader>
-                        <Eyebrow>Statistics</Eyebrow>
-                        <TextRevealOnScroll hiddenColor="#36332d" revealedColor="#fff" as="h2" className="leading-tight whitespace-pre-line text-center">
+                        <Eyebrow className="sm:mx-auto">Statistics</Eyebrow>
+                        <TextRevealOnScroll hiddenColor="#36332d" revealedColor="#fff" as="h2" className="leading-tight whitespace-pre-line sm:text-center">
                             {`Numbers speaks for itself`}
                         </TextRevealOnScroll>
                     </SectionHeader>
@@ -122,7 +123,7 @@ const HomeImpact = () => {
                     </div>
                 </Container>
             </div>
-        </section>
+        </Section>
     );
 };
 

@@ -7,7 +7,7 @@ import HeroVideo from "./HeroVideo2"
 const Hero = () => {
     return (
         <Section className="p-0!  w-full flex">
-            <div className="rounded-xl justify-center p-3 sm:p-5 overflow-hidden w-full flex relative">
+            <div className="rounded-xl justify-center p-1 sm:p-5 overflow-hidden w-full flex relative">
                 <HeroVideo />
                 <Container className="absolute z-10 bottom-[calc(5px+5vw)]">
                     <div className="space-y-5">
@@ -32,14 +32,14 @@ const Hero = () => {
 
 const HeroHeading = () => {
     return (
-        <h1 className="text-5xl md:text-7xl font-bold text-background flex">
+        <h1 className="text-3xl md:text-7xl font-bold text-background flex">
             Precision Brass <br />Components <br /> Built to Last
         </h1>
     )
 }
 const HeroDescription = () => {
     return (
-        <p className="text-muted max-w-lg">
+        <p className="text-muted text-xs min-[468px]:text-sm sm:text-[16px] max-w-lg">
             Swastik Brass Components engineers high-performance brass parts for the world's most demanding industries — from aerospace to heavy rail.
         </p>
     )
@@ -47,7 +47,7 @@ const HeroDescription = () => {
 
 const HeroCta = () => {
     return (
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="hidden sm:flex flex-col sm:flex-row gap-4">
             <Fade className="flex">
 
                 <CustomLink
@@ -63,9 +63,10 @@ const HeroCta = () => {
                 <CustomLink
                     href={"/quote"}
                     variant="button-brand"
+                    className="w-max"
                 >
                     Get a Quote
-                    <Arrow variant="black" className="hidden sm:flex" />
+                    <Arrow variant="black" />
                 </CustomLink>
             </Fade>
         </div>

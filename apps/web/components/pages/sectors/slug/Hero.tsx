@@ -26,8 +26,8 @@ const SectorHero = ({ className = "", sectorName, sectorDescription, coverImageU
             <div className="absolute inset-0 bg-linear-to-r from-black/80 to-transparent" />
             <Container className="relative z-10 h-[calc(100dvh-12rem)] flex items-end">
                 <div className="space-y-4 max-w-xl mb-12">
-                    <h1 className="text-9xl font-bold text-white tracking-wide">{sectorName.toUpperCase()}</h1>
-                    <p className="text-lg text-white">{sectorDescription}</p>
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl 2xl:text-9xl font-bold text-white tracking-wide">{sectorName.toUpperCase()}</h1>
+                    <p className="text-sm sm:text-base md:text-lg text-white">{sectorDescription}</p>
                 </div>
 
             </Container>

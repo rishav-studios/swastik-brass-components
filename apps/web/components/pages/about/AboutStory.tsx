@@ -5,10 +5,11 @@ import { Arrow, CustomLink } from "@/components/shared/clickables/CustomLink"
 import { Eyebrow } from "@/components/shared/SectionHeader"
 import { TextRevealOnScroll } from "@/components/shared/TextReveal"
 import { icons } from "@swastik/ui"
+import Image from "next/image"
 
 const AboutStory = () => {
     return (
-        <Section>
+        <Section className="hidden">
             <BackgroundNoise />
             <BackgroundLines className="w-9/10 mx-auto" />
             <Container className="relative z-10 space-y-24">
@@ -32,14 +33,8 @@ const AboutStory = () => {
                 {/* bottom */}
                 <div className="grid grid-cols-10 gap-20">
                     <div className="col-span-3 relative rounded-2xl overflow-hidden">
-                        <img src="http://localhost:3000/_next/image?url=%2Fabout-founder.png&w=828&q=75" alt="" className="w-full h-full object-cover z-1 absolute inset-0" />
-                        <div className="absolute inset-0 w-full h-full bg-linear-to-t from-foreground to-transparent flex p-6 items-end z-20">
-                            <div className="flex flex-col gap-2">
-                                <span className="text-2xl font-medium text-background">Savan Sojitra</span>
-                                <span className="text-lg text-background/80">Founder & CEO</span>
-                            </div>
+                        <Image src="/about-founder.png" alt="" fill className="w-full h-full object-cover z-1 absolute inset-0" />
 
-                        </div>
                     </div>
                     <div className="col-span-7 grid grid-cols-2 gap-20">
                         {/* story */}
@@ -60,21 +55,21 @@ const AboutStory = () => {
                         {/* facilities */}
                         <div className=" h-full flex flex-col gap-6">
                             <h3 className="font-semibold text-3xl">Our Facilities</h3>
-                            <ul className=" w-full text-lg text-foreground/80">
+                            <ul className=" w-full text-lg text-foreground/80 space-y-4">
                                 <li>
-                                    <CustomLink variant="custom" href="/facilities/manufacturing" className="flex justify-between py-4 border-b-2 border-gray-300 hover:border-foreground/70 transition-colors duration-300">
+                                    <CustomLink variant="custom" href="/facilities/manufacturing" className="flex justify-between pb-4 border-b-2 border-gray-300 hover:border-foreground/70 transition-colors duration-300">
                                         Manufacturing Facility
                                         <icons.arrowRight />
                                     </CustomLink>
                                 </li>
                                 <li>
-                                    <CustomLink variant="custom" href="/facilities/testing" className="flex justify-between py-4 border-b-2 border-gray-300 hover:border-foreground/70 transition-colors duration-300">
+                                    <CustomLink variant="custom" href="/facilities/testing" className="flex justify-between pb-4 border-b-2 border-gray-300 hover:border-foreground/70 transition-colors duration-300">
                                         Testing Facility
                                         <icons.arrowRight />
                                     </CustomLink>
                                 </li>
                             </ul>
-                            <CustomLink variant="button-black" className="w-max hover:bg-primary transition-colors duration-300 mt-auto">
+                            <CustomLink variant="button-black" className="w-max mt-auto">
                                 View all
                                 <Arrow variant="primary" />
                             </CustomLink>

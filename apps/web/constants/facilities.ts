@@ -1,59 +1,61 @@
 export const manufacturingData = {
     hero: {
         title: "Advanced Manufacturing",
-        subtitle: "Technology",
+        subtitle: "Facility",
         description: "Equipped with industry-leading technology, our manufacturing division enables us to deliver precision-engineered components at high volumes with unparalleled consistency and reliability.",
-        image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769929282/t1u0asqx0f10aszbcege_w9hcn2.avif"
+        images: [
+            "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/shop-floor-1.webp",
+            "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/shop-floor-3.webp",
+            "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/operating-people.webp",
+            "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/quality-checking.webp",
+            "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/component-programming.webp",
+        ]
     },
     coreFacilities: [
         {
             groupName: "Core Manufacturing Facilities",
+            eyebrow: "machines",
             description: "Our core facilities are designed for high-precision and high-volume output.",
             machines: [
                 {
-                    name: "Multi-Axis CNC Turning Center",
+                    name: "5-Axis Machining Center",
                     description: "Advanced turning centers capable of complex geometries in a single setup.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769929284/uvkd4wtkdinfjxyns1vx_d4zokc.avif"
+                    image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/5-axis-machining-center.webp"
                 },
                 {
-                    name: "Vertical Machining Center (VMC)",
+                    name: "Turn Mill Center",
+                    description: "Advanced turning centers capable of complex geometries in a single setup.",
+                    image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/turn-mill-center.webp"
+                },
+                {
+                    name: "Vertical Milling Center (VMC)",
                     description: "High-speed milling for precise secondary operations and complex parts.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769929287/amruavne89sitazgghqg_s0hh2m.avif"
+                    image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/vertical-milling-center.webp"
                 },
                 {
-                    name: "Swiss-Type CNC Lathe",
+                    name: "CNC Turning Center",
                     description: "Ideal for long, slender, and complex turned parts with exceptional accuracy.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769927685/25_t3o7xq.avif"
+                    image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/cnc-turning-center.webp"
                 },
                 {
-                    name: "Automated Bar Feeder CNC",
+                    name: "Multitasking Machine",
+                    description: "Ideal for long, slender, and complex turned parts with exceptional accuracy.",
+                    image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/multitasking-machine.webp"
+                },
+                {
+                    name: "Horizontal Machining Center",
                     description: "Enables continuous, unattended production for high-volume orders.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769922033/22_r4bhcv.avif"
+                    image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/horizontal-machining-center.webp"
                 }
             ]
         },
-        {
-            groupName: "Secondary Operations",
-            description: "Supporting operations to ensure complete part finishing.",
-            machines: [
-                {
-                    name: "Thread Rolling Machine",
-                    description: "Produces strong, precise threads without material loss.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769927678/23_xggshh.avif"
-                },
-                {
-                    name: "Centerless Grinding",
-                    description: "Ensures perfect OD tolerance and surface finish.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769927680/19_ix4u9d.avif"
-                }
-            ]
-        }
+
     ],
     shopFloorGallery: [
-        "https://res.cloudinary.com/byraveshwara/image/upload/v1769929180/aa_xfpogu.avif",
-        "https://res.cloudinary.com/byraveshwara/image/upload/v1769927677/20_tsywmk.avif",
-        "https://res.cloudinary.com/byraveshwara/image/upload/v1769928256/ChatGPT_Image_Jan_19_2026_10_28_16_PM_epxfs6.avif",
-        "https://res.cloudinary.com/byraveshwara/image/upload/v1769929282/t1u0asqx0f10aszbcege_w9hcn2.avif"
+        "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/shop-floor-1.webp",
+        "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/shop-floor-3.webp",
+        "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/shop-floor-4.webp",
+        "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/shop-floor-2.webp"
     ],
     footprint: [
         { unit: "01", name: "Precision Machining Facility", sqft: "5,000", desc: "Supporting core machining operations with high-speed turning and milling." },
@@ -67,7 +69,13 @@ export const testingData = {
         title: "Quality Assurance",
         subtitle: "& Testing",
         description: "Our state-of-the-art testing facility ensures that every component leaving our floor meets the strictest dimensional tolerances and metallurgical standards.",
-        image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769927677/20_tsywmk.avif"
+        images: [
+            "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/quality-checking.webp",
+            "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/component-programming.webp",
+            "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/operating-people.webp",
+            "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/shop-floor-1.webp",
+            "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/shop-floor-3.webp",
+        ]
     },
     coreFacilities: [
         {
@@ -77,12 +85,12 @@ export const testingData = {
                 {
                     name: "Automated Optical Sorter",
                     description: "Inspects thousands of parts per minute for dimensional accuracy and surface defects.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769929284/uvkd4wtkdinfjxyns1vx_d4zokc.avif"
+                    image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/testing-5.webp"
                 },
                 {
                     name: "Vision Measuring System",
                     description: "High-resolution non-contact measurement for complex micro-features.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769929287/amruavne89sitazgghqg_s0hh2m.avif"
+                    image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/testing-1.webp"
                 }
             ]
         },
@@ -93,41 +101,26 @@ export const testingData = {
                 {
                     name: "Coordinate Measuring Machine (CMM)",
                     description: "3D precision measurement ensuring true geometric tolerancing.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769927685/25_t3o7xq.avif"
+                    image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/testing-2-.webp"
                 },
                 {
                     name: "Surface Roughness Tester",
                     description: "Measures micro-irregularities to guarantee optimal finish.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769922033/22_r4bhcv.avif"
+                    image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/testing-6.webp"
                 }
             ]
         },
-        {
-            groupName: "Material Testing",
-            description: "Verifying chemical and physical properties of our brass alloys.",
-            machines: [
-                {
-                    name: "Spectrometer",
-                    description: "Rapid chemical composition analysis of raw materials and finished goods.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769927678/23_xggshh.avif"
-                },
-                {
-                    name: "Hardness Tester",
-                    description: "Verifies material strength (Rockwell/Brinell) meets specification.",
-                    image: "https://res.cloudinary.com/byraveshwara/image/upload/v1769927680/19_ix4u9d.avif"
-                }
-            ]
-        }
-    ],
-    shopFloorGallery: [
-        "https://res.cloudinary.com/byraveshwara/image/upload/v1769929284/uvkd4wtkdinfjxyns1vx_d4zokc.avif",
-        "https://res.cloudinary.com/byraveshwara/image/upload/v1769929287/amruavne89sitazgghqg_s0hh2m.avif",
-        "https://res.cloudinary.com/byraveshwara/image/upload/v1769927685/25_t3o7xq.avif",
-        "https://res.cloudinary.com/byraveshwara/image/upload/v1769927677/20_tsywmk.avif"
-    ],
-    footprint: [
-        { unit: "01", name: "Central Quality Lab", sqft: "2,000", desc: "Main inspection center equipped with advanced CMM and optical sorting." },
-        { unit: "02", name: "In-process Inspection Zones", sqft: "1,500", desc: "Distributed quality checkpoints across the shop floor for real-time monitoring." }
+        // {
+        //     groupName: "Others",
+        //     machines: [
+        //         {
+        //             image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/testing-3.webp"
+        //         },
+        //         {
+        //             image: "https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/testing-4.webp"
+        //         }
+        //     ]
+        // }
     ]
 };
 

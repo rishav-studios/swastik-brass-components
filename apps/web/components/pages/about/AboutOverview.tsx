@@ -15,17 +15,17 @@ const AboutOverview = () => {
     })
     const containerX = useTransform(scrollYProgress, [0, 1], [-100, 100])
     return (
-        <Section className="min-h-[80dvh] h-[80dvh] w-full py-0 lg:py-0">
-            <div className="grid grid-cols-2 h-full">
+        <Section className="min-h-max h-max w-full py-0 lg:py-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 h-full">
                 {/* left image */}
                 <div className="w-full h-full">
                     <img src="/factory.jpeg" alt="" className="w-full h-full object-cover" />
                 </div>
                 {/* right content */}
                 <div className="bg-primary flex flex-col">
-                    <div className="space-y-6 max-w-2xl p-8 pr-0">
+                    <div className="space-y-6 max-w-2xl p-8 sm:pr-0">
                         <p className="text-background font-medium">We are a team dedicated to precision engineering, delivering solutions that shape industries worldwide. Our journey is defined by trust, quality, and a commitment to excellence in every project.</p>
-                        <div className="flex gap-6">
+                        <div className="flex flex-col gap-6">
 
                             <CustomLink href="#journey" variant="button-black" className="hover:bg-background hover:text-foreground transition-colors duartion-300 w-max">
                                 Our journey
@@ -42,7 +42,7 @@ const AboutOverview = () => {
                             style={{
                                 x: containerX
                             }}
-                            className="flex text-[4rem] md:text-[8rem] font-semibold tracking-tighter text-background/40 leading-none"
+                            className="flex text-[3rem] md:text-[6rem] lg:text-[8rem] font-semibold tracking-tighter text-background/40 leading-none"
                         >
                             <motion.span
                                 animate={{ x: ["0%", "-50%"] }}

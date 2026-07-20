@@ -26,9 +26,9 @@ const FOOTER_LINKS = {
 
     ],
     legal: [
-        { id: "f8f6c2c2-2d6dd7h", label: "Privacy Policy", href: "/privacy" },
+        { id: "f8f6c2c2-2d6dd7h", label: "Privacy Policy", href: "/privacy-policy" },
         { id: "f8f6c2c2-2d6dd7i", label: "Terms of Service", href: "/terms" },
-        { id: "f8f6c2c2-2d6dd7j", label: "Quality Policy", href: "/quality" },
+        { id: "f8f6c2c2-2d6dd7j", label: "Quality Policy", href: "/quality-policy" },
     ],
     socials: [
         {

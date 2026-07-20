@@ -1,5 +1,7 @@
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
+import { Description, Eyebrow, SectionHeader } from "@/components/shared/SectionHeader";
+import { TextRevealOnScroll } from "@/components/shared/TextReveal";
 import Image from "next/image";
 
 type ShopFloorGalleryProps = {
@@ -8,25 +10,26 @@ type ShopFloorGalleryProps = {
 
 const ShopFloorGallery = ({ images }: ShopFloorGalleryProps) => {
     return (
-        <Section className="py-24 bg-zinc-950 text-white">
-            <Container>
-                <div className="mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">Optimized Shop Floor</h2>
-                    <p className="text-zinc-400 max-w-2xl text-lg">
+        <Section className="bg-zinc-950 text-white">
+            <Container className="space-y-12">
+                <SectionHeader>
+                    <Eyebrow>Shop Floor</Eyebrow>
+                    <TextRevealOnScroll as="h2" revealedColor="#fff" hiddenColor="#36332d">Optimized Shop Floor</TextRevealOnScroll>
+                    <Description className="text-gray-100 text-start text-base max-w-xl">
                         Our facility is designed around process-driven manufacturing principles to ensure seamless material flow, safety, and peak operational efficiency.
-                    </p>
-                </div>
-                
+                    </Description>
+                </SectionHeader>
+
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {images.map((img, idx) => {
                         // Create an interesting masonry-like layout for 4 images
                         let layoutClass = 'h-48 md:h-[240px]'; // default small square-ish
                         if (idx === 0) layoutClass = 'col-span-2 row-span-2 h-[400px] md:h-[500px]';
                         if (idx === 3) layoutClass = 'col-span-2 h-48 md:h-[240px]';
-                        
+
                         return (
                             <div key={idx} className={`relative rounded-2xl overflow-hidden group ${layoutClass}`}>
-                                <Image 
+                                <Image
                                     src={img}
                                     alt={`Shop floor image ${idx + 1}`}
                                     fill

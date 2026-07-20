@@ -1,6 +1,5 @@
 "use client";
 
-import { TransitionLink } from "@/components/shared/TransitionLink";
 import { FacilityCategory } from "@swastik/types";
 import { icons } from "@swastik/ui";
 import {
@@ -13,13 +12,15 @@ import {
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
-import { CustomLink } from "../shared/clickables/CustomLink";
+import { Arrow, CustomLink } from "../shared/clickables/CustomLink";
 import Container from "./Container";
 
-type NavLink = {
+type BaseNavLink = {
     name: string,
-    href: string,
     type: "link" | "dropdown"
+}
+type NavLink = BaseNavLink & {
+    href?: string,
 }
 
 const NAV_LINKS: NavLink[] = [
@@ -34,7 +35,6 @@ const NAV_LINKS: NavLink[] = [
     },
     {
         name: "Facilities",
-        href: "/facilities",
         type: "dropdown"
     },
     // {
@@ -122,12 +122,12 @@ const MobileNavigation = ({
                                                 >
                                                     {facilityCategories.map(cat => (
                                                         <DropdownMenuItem key={cat.slug} asChild className="focus:bg-white/10 focus:text-white cursor-pointer rounded-xl mb-1 last:mb-0">
-                                                            <TransitionLink href={`/facilities/${cat.slug}`} onClick={() => setIsOpen(false)} className="flex items-center gap-4 w-full px-2 py-3">
+                                                            <CustomLink href={`/facilities/${cat.slug}`} className="flex items-center gap-4 w-full px-2 py-3">
                                                                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
                                                                     <icons.building2 className="w-5 h-5" />
                                                                 </div>
                                                                 <p className="text-lg font-bold">{cat.display_name || cat.name}</p>
-                                                            </TransitionLink>
+                                                            </CustomLink>
                                                         </DropdownMenuItem>
                                                     ))}
                                                 </DropdownMenuContent>
@@ -143,13 +143,12 @@ const MobileNavigation = ({
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.1 + i * 0.05 }}
                                     >
-                                        <TransitionLink
+                                        <CustomLink
                                             href={link.href}
-                                            onClick={() => setIsOpen(false)}
                                             className="block text-2xl font-bold py-4 text-white hover:text-primary transition-colors border-b border-white/5"
                                         >
                                             {link.name}
-                                        </TransitionLink>
+                                        </CustomLink>
                                     </motion.div>
                                 );
                             })}
@@ -161,20 +160,19 @@ const MobileNavigation = ({
                             transition={{ delay: 0.3 }}
                             className="p-6 flex flex-col gap-4 mt-auto mb-6"
                         >
-                            <TransitionLink
+                            <CustomLink
                                 href="/contact"
-                                onClick={() => setIsOpen(false)}
-                                className="w-full text-center text-base font-semibold text-white border border-white/30 rounded-full py-4 hover:bg-white/10 transition-colors"
+                                variant="outline-black"
                             >
                                 Contact
-                            </TransitionLink>
-                            <TransitionLink
+                            </CustomLink>
+                            <CustomLink
                                 href="/quote"
-                                onClick={() => setIsOpen(false)}
-                                className="w-full text-center text-base font-semibold text-white bg-primary rounded-full py-4 hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 active:scale-[0.98]"
+                                variant="button-brand"
                             >
                                 Quote Request
-                            </TransitionLink>
+                                <Arrow variant="white" />
+                            </CustomLink>
                         </motion.div>
                     </motion.div>
                 </>
@@ -206,7 +204,7 @@ const Navbar = ({ facilityCategories = [] }: NavbarProps) => {
                         className=" flex gap-6 xl:gap-0 xl:grid xl:grid-cols-4  pr-2 pl-6 py-2 md:py-1 lg:py-0"
                     >
                         {/* Logo */}
-                        <TransitionLink href="/" className="flex items-center lg:col-span-1">
+                        <CustomLink href="/" variant="custom" className="flex items-center lg:col-span-1">
                             <div
                                 style={{ width: 140, height: 40 }}
                                 className="relative ">
@@ -218,7 +216,7 @@ const Navbar = ({ facilityCategories = [] }: NavbarProps) => {
                                     priority
                                 />
                             </div>
-                        </TransitionLink>
+                        </CustomLink>
 
                         {/* Links */}
                         <div className="hidden lg:flex items-center gap-8 relative justify-center lg:col-span-2">
@@ -231,14 +229,14 @@ const Navbar = ({ facilityCategories = [] }: NavbarProps) => {
                                             onMouseEnter={() => setIsFacilitiesHovered(true)}
                                             onMouseLeave={() => setIsFacilitiesHovered(false)}
                                         >
-                                            <TransitionLink
+                                            <CustomLink
                                                 href={link.href}
                                                 className="relative text-sm font-medium text-foreground hover:text-primary transition-colors group flex items-center gap-1 py-4"
                                             >
                                                 {link.name}
                                                 <icons.chevronDown className={`w-3 h-3 transition-transform duration-300 ${isFacilitiesHovered ? 'rotate-180' : ''}`} />
                                                 <span className="absolute bottom-3 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full rounded-full" />
-                                            </TransitionLink>
+                                            </CustomLink>
 
                                             {/* Dropdown */}
                                             <motion.div
@@ -250,10 +248,11 @@ const Navbar = ({ facilityCategories = [] }: NavbarProps) => {
                                             >
                                                 <div className="p-2 flex flex-col">
                                                     {facilityCategories.map(cat => (
-                                                        <TransitionLink
+                                                        <CustomLink
+                                                            variant="custom"
                                                             key={cat.slug}
                                                             href={`/facilities/${cat.slug}`}
-                                                            className="px-4 py-3 hover:bg-black/5 rounded-xl transition-colors flex items-center gap-3 group/item"
+                                                            className="px-4 py-3 hover:bg-black/5 rounded-full transition-colors flex items-center gap-3 group/item"
                                                         >
                                                             <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-white transition-colors">
                                                                 <icons.building2 className="w-4 h-4" />
@@ -261,7 +260,7 @@ const Navbar = ({ facilityCategories = [] }: NavbarProps) => {
                                                             <div>
                                                                 <p className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">{cat.display_name || cat.name}</p>
                                                             </div>
-                                                        </TransitionLink>
+                                                        </CustomLink>
                                                     ))}
                                                 </div>
                                             </motion.div>
@@ -289,16 +288,17 @@ const Navbar = ({ facilityCategories = [] }: NavbarProps) => {
                                 <CustomLink
                                     href="/contact"
                                     variant="outline-black"
-                                    className="text-sm hidden lg:flex"
+                                    className="hidden lg:flex"
                                 >
                                     Contact
                                 </CustomLink>
                                 <CustomLink
                                     href="/quote"
                                     variant="button-brand"
-                                    className="text-sm hidden md:flex"
+                                    className="hidden md:flex"
                                 >
                                     Quote Request
+                                    <Arrow variant="white" className="p-1" />
                                 </CustomLink>
                             </div>
 

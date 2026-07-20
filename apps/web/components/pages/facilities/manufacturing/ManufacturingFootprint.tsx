@@ -1,5 +1,7 @@
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
+import { Description, Eyebrow, SectionHeader } from "@/components/shared/SectionHeader";
+import { TextRevealOnScroll } from "@/components/shared/TextReveal";
 
 type Unit = {
     unit: string;
@@ -14,12 +16,13 @@ type ManufacturingFootprintProps = {
 
 const ManufacturingFootprint = ({ units }: ManufacturingFootprintProps) => {
     return (
-        <Section className="py-24 bg-zinc-900 text-white">
-            <Container>
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Manufacturing Footprint</h2>
-                    <p className="text-zinc-400 text-lg">Scalable manufacturing facilities with dedicated precision and specialized units.</p>
-                </div>
+        <Section className=" bg-zinc-900 text-white">
+            <Container className="space-y-16">
+                <SectionHeader>
+                    <Eyebrow className="mx-auto">manufacturing units</Eyebrow>
+                    <TextRevealOnScroll as="h2" revealedColor="#fff" hiddenColor="#36332d" className="text-center">Manufacturing Footprint</TextRevealOnScroll>
+                    <Description className="text-gray-100">Scalable manufacturing facilities with dedicated precision and specialized units.</Description>
+                </SectionHeader>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {units.map((item, i) => (

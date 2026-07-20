@@ -254,7 +254,7 @@ export function TextRevealOnScroll({
     return (
         <Component
             ref={containerRef}
-            className={cn("relative", classes[as], className)}
+            className={cn("relative text-sm", classes[as], className)}
         >
             {/* Sticky inner keeps the text centred while scrolling */}
             <>

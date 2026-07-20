@@ -12,13 +12,13 @@ import MobileCircles from "./MobileCircles"
 
 const HomeAbout = () => {
     return (
-        <Section className="relative bg-background h-[440dvh] lg:h-[300dvh] xl:h-[220dvh] py-0">
+        <Section className="relative bg-background pb-4">
             <BackgroundNoise />
             <BackgroundLines className="w-[90%] mx-auto" />
-            <Container className="absolute inset-0 z-10">
+            <Container className="relative z-10">
 
 
-                <div className="space-y-20 py-24 lg:py-40" >
+                <div className="space-y-20" >
                     {/* top side */}
                     <div className="space-y-8 lg:col-span-4">
 
@@ -53,15 +53,15 @@ const HomeAbout = () => {
                                 <p className="max-w-xl">Our facility houses state-of-the-art CNC turning, automatic screw machines, and in-house quality labs — enabling us to produce complex geometries to the tightest tolerances across a wide range of brass alloys.</p>
                             </Fade>
 
-                            <div className="flex gap-5">
+                            <div className="flex flex-col md:flex-row gap-5">
                                 <Fade>
 
-                                    <CustomLink variant="button-black" href={"/about"} >
+                                    <CustomLink variant="button-black" href={"/about"} className="w-max" >
                                         Know more
                                         <Arrow variant="primary" />
                                     </CustomLink>
                                 </Fade>
-                                <Fade delay={0.2} className="flex">
+                                <Fade delay={0.2} className="flex w-max">
                                     <CustomLink variant="hover-underline" href={"/quote"} className="text-primary">
                                         Download brochure
                                         <icons.download />

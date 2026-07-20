@@ -3,13 +3,8 @@ import type { Sector } from "./SectorCard";
 /**
  * SECTORS_DATA
  *
- * Replace `videoSrc` with your actual WebM/MP4 paths.
- * Keep both formats side-by-side in /public:
- *   /sectors/aerospace.webm  (primary — Chrome/Firefox)
- *   /sectors/aerospace.mp4   (fallback — Safari)
- *
- * Videos should be processed with ffmpeg:
- *   ffmpeg -i input.mp4 -movflags faststart -g 30 -vf scale=1280:-2 -crf 28 -vcodec libx264 output.mp4
+ * Each sector's frames live in /public/sectors/frames/<id>/
+ * Naming: frame_0001.webp … frame_NNNN.webp
  */
 export const SECTORS_DATA: Sector[] = [
     {
@@ -22,7 +17,12 @@ export const SECTORS_DATA: Sector[] = [
             { value: "±0.005", unit: "mm Tolerance" },
             { value: "AS9100", unit: "Certified" },
         ],
-        videoSrc: "/sectors/videos/aerospace.mp4",
+        frameSrc: {
+            dir: "/sectors/frames/aerospace",
+            prefix: "frame_",
+            count: 96,
+            padDigits: 4,
+        },
         posterSrc: "/sectors/aerospace-1.webp",
     },
     {
@@ -35,8 +35,13 @@ export const SECTORS_DATA: Sector[] = [
             { value: "30+", unit: "Years Lifespan" },
             { value: "EN 45545", unit: "Fire Rated" },
         ],
-        videoSrc: "/sectors/videos/railway.mp4",
-        posterSrc: "/sectors/railway-1.webp"
+        frameSrc: {
+            dir: "/sectors/frames/railway",
+            prefix: "frame_",
+            count: 96,
+            padDigits: 4,
+        },
+        posterSrc: "/sectors/railway-1.webp",
     },
     {
         id: "oil-gas",
@@ -48,8 +53,13 @@ export const SECTORS_DATA: Sector[] = [
             { value: "600", unit: "Bar Rated" },
             { value: "DZR", unit: "Brass Alloy" },
         ],
-        videoSrc: "/sectors/videos/oil-gas.mp4",
-        posterSrc: "/sectors/oil-gas-1.webp"
+        frameSrc: {
+            dir: "/sectors/frames/oil-gas",
+            prefix: "frame_",
+            count: 121,
+            padDigits: 4,
+        },
+        posterSrc: "/sectors/oil-gas-1.webp",
     },
     {
         id: "automobile",
@@ -61,7 +71,12 @@ export const SECTORS_DATA: Sector[] = [
             { value: "IATF", unit: "16949 Certified" },
             { value: "1M+", unit: "Parts / Year" },
         ],
-        videoSrc: "/sectors/videos/automobile.mp4",
-        posterSrc: "/sectors/automobile-1.webp"
-    }
+        frameSrc: {
+            dir: "/sectors/frames/automobile",
+            prefix: "frame_",
+            count: 73,
+            padDigits: 4,
+        },
+        posterSrc: "/sectors/automobile-1.webp",
+    },
 ];

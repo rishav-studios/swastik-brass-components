@@ -116,8 +116,9 @@ type ArrowVariants = "primary" | "black" | "white"
 type ArrowProps = {
     className?: string;
     variant?: ArrowVariants;
+    iconClassName?: string;
 }
-export const Arrow = ({ className = "", variant = "black" }: ArrowProps) => (
+export const Arrow = ({ className = "", variant = "black", iconClassName }: ArrowProps) => (
     <div className={cn(
         "flex p-2 rounded-full",
         {
@@ -127,5 +128,5 @@ export const Arrow = ({ className = "", variant = "black" }: ArrowProps) => (
         },
         className
     )}>
-        <icons.arrowRight className="w-5 h-5 group-hover/custom-link:-rotate-45 transition-transform duration-300" />
+        <icons.arrowRight className={cn("w-5 h-5 group-hover/custom-link:-rotate-45 transition-transform duration-300", iconClassName)} />
     </div>)

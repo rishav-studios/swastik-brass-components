@@ -10,7 +10,12 @@ export type Sector = {
     slug: string;
     description: string;
     stats: { value: string; unit: string }[];
-    videoSrc: string;
+    frameSrc: {
+        dir: string;
+        prefix: string;
+        count: number;
+        padDigits: number;
+    };
     posterSrc: string;
 };
 

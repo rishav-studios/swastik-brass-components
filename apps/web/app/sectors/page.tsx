@@ -1,8 +1,6 @@
 import Container from "@/components/layout/Container";
-import { GlowOrb } from "@/components/layout/Footer";
 import Section from "@/components/layout/Section";
 import HomeCTA from "@/components/pages/home/cta/HomeCTA";
-import SectorHeroCards from "@/components/pages/sectors/SectorHeroCards";
 import BackgroundNoise, { BackgroundLines } from "@/components/shared/BackgroundNoise";
 import { CustomLink } from "@/components/shared/clickables/CustomLink";
 import MouseScrollAnimatedIcon from "@/components/shared/MouseScrollAnimatedIcon";
@@ -66,32 +64,23 @@ export default async function SectorsPage() {
     return (
         <main className="w-full">
             {/* SECTOR DETAIL GRID SECTION */}
-            <Section className="bg-foreground flex items-ceter overflow-hidden">
-                {/* <div className="absolute w-20 h-10 flex justify-center items-center rounded-full border-2 border-background"> */}
-                <MouseScrollAnimatedIcon />
-
-                {/* </div> */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
-                <GlowOrb id="orb-sector-1" className="opacity-20 -top-150 -left-150" />
-                <Container className="grid grid-cols-1 lg:grid-cols-2 h-[calc(100dvh-12rem)]">
-                    <div className="flex items-end">
-                        <div className="space-y-6 shrink-0 max-w-xl ">
-
-                            <h1 className="leading-[1.1] text-5xl lg:text-7xl font-bold text-background">
-                                Engineering Across <br />
-                                <span className="text-primary">Industries</span>
-                            </h1>
-                            <p className="text-muted text-lg lg:text-xl max-w-2xl pt-2">
-                                We serve critical industries where precision, reliability, and quality are non-negotiable. Our engineering capabilities support complex applications across aerospace, defense and railways sectors.
-                            </p>
-                        </div>
-                    </div>
-                    <SectorHeroCards sectors={sectors} />
-                </Container>
-            </Section>
-            <Section className="py-24 lg:py-32 bg-background">
+            <Section className="min-h-[80dvh] lg:py-16 lg:pt-24">
                 <BackgroundNoise />
                 <BackgroundLines className="w-9/10 mx-auto" />
+                <Container className="relative z-10 h-[calc(80dvh-8rem)] lg:h-[calc(80dvh-10rem)] flex flex-col">
+                    <SectionHeader className="space-y-6 my-auto sm:mt-auto">
+                        <Eyebrow className="mx-auto">Sectors</Eyebrow>
+                        <h1 className="text-center text-6xl md:text-8xl font-medium">Serving Critical Industries</h1>
+                    </SectionHeader>
+                    <div className="justify-between hidden sm:flex text-gray-500 mt-auto">
+                        <span>Jamnagar, Gujarat, India</span>
+                        <span>22.4685° N, 70.0573° E</span>
+                    </div>
+                </Container>
+                <MouseScrollAnimatedIcon iconContainerClassname="bg-gray-300" />
+
+            </Section>
+            <Section className="py-24 lg:py-32 bg-background">
 
                 <Container className="space-y-12">
 

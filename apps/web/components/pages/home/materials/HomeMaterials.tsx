@@ -73,11 +73,15 @@ const HomeMaterials = () => {
     return (
         <Section className="relative items-center justify-center ">
 
-            <Container className="flex flex-col gap-24">
-                <SectionHeader className="text-center z-10 mx-auto max-w-3xl flex flex-col items-center gap-2">
-                    <Eyebrow className="mx-auto">Materials</Eyebrow>
+            <Container className="flex flex-col gap-6 min-[468px]:gap-12 md:gap-16 lg:gap-24">
+                <SectionHeader>
+                    <Eyebrow className="min-[468px]:mx-auto">Materials</Eyebrow>
 
-                    <TextRevealOnScroll as="h2" className="leading-tight whitespace-pre-line">
+                    <TextRevealOnScroll as="h2" className="leading-tight min-[468px]:hidden whitespace-pre-line">
+
+                        {`Manufacturing\nsolutions\nwith standard\nmaterials`}
+                    </TextRevealOnScroll>
+                    <TextRevealOnScroll as="h2" className="leading-tight hidden min-[468px]:inline whitespace-pre-line text-center">
 
                         {`Manufacturing solutions\nwith standard materials`}
                     </TextRevealOnScroll>

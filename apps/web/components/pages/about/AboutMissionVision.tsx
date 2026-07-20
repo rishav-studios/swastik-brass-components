@@ -3,61 +3,135 @@
 import Fade from "@/components/animations/Fade";
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
-import { Heading, SectionHeader } from "@/components/shared/SectionHeader";
+import { TextRevealOnScroll } from "@/components/shared/TextReveal";
 import { icons } from "@swastik/ui/constants/icon";
 
+/* ── Bullet point sub-component ─────────────────────────────── */
+const BulletPoint = ({ children }: { children: React.ReactNode }) => (
+    <li className="flex items-center gap-3 text-foreground/80">
+        <icons.arrowRight className="w-4 h-4 text-foreground shrink-0" />
+        <span className="text-base font-medium">{children}</span>
+    </li>
+);
+
+/* ── Mission image collage (left side) ──────────────────────── */
+const MissionImageGrid = () => (
+    <div className="relative w-full h-full md:min-h-[400px]">
+        {/* Large background image — 75% width, pushed right */}
+        <div className=" w-[75%] h-full overflow-hidden rounded-2xl">
+            <img
+                src="/factory.jpeg"
+                alt="Manufacturing facility"
+                className="w-full h-full object-cover"
+            />
+        </div>
+
+        {/* Smaller overlapping image — vertically centered, half on / half off */}
+        <div className="absolute right-0 top-1/2 bg-white p-1 md:p-2 -translate-y-1/2 w-[55%] aspect-4/3 overflow-hidden rounded-2xl shadow-2xl">
+            <img
+                src="/about-facility.png"
+                alt="Quality inspection"
+                className="w-full h-full object-cover rounded-2xl"
+            />
+        </div>
+    </div>
+);
+
+/* ── Vision overlapping images (right side) ─────────────────── */
+const VisionImageStack = () => (
+    <div className="relative w-full h-full md:min-h-[400px]">
+        {/* Large background image — 75% width, pushed right */}
+        <div className="ml-auto w-[75%] h-full rounded-2xl">
+            <img
+                src="/factory.jpeg"
+                alt="Manufacturing facility"
+                className="w-full h-full object-cover"
+            />
+        </div>
+
+        {/* Smaller overlapping image — vertically centered, half on / half off */}
+        <div className="absolute left-0 top-1/2 bg-white p-1 md:p-2 -translate-y-1/2 w-[55%] aspect-4/3 overflow-hidden rounded-2xl shadow-2xl">
+            <img
+                src="/about-facility.png"
+                alt="Quality inspection"
+                className="w-full h-full object-cover rounded-2xl"
+            />
+        </div>
+    </div>
+);
+
+/* ══════════════════════════════════════════════════════════════ */
+/*  Main Component                                               */
+/* ══════════════════════════════════════════════════════════════ */
 const AboutMissionVision = () => {
     return (
-        <Section className="bg-background relative py-24 overflow-hidden">
-            <Container>
-                <SectionHeader className="text-center mb-16 space-y-4">
-                    <Heading className="text-4xl md:text-5xl lg:text-6xl font-black">
-                        Engineering Our <span className="text-primary">Future</span>
-                    </Heading>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Our guiding principles that drive every decision, every process, and every component we manufacture.
-                    </p>
-                </SectionHeader>
+        <Section className="bg-background relative overflow-hidden min-h-max">
+            <Container className="space-y-24 lg:space-y-32">
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    
-                    {/* Mission Card */}
-                    <Fade delay={0.1}>
-                        <div className="group relative h-full bg-card rounded-[2rem] p-10 md:p-12 border border-border shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 transition-all duration-500 overflow-hidden">
-                            {/* Decorative background blur */}
-                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 blur-[50px] rounded-full pointer-events-none group-hover:bg-primary/20 transition-colors duration-500" />
-                            
-                            <div className="relative z-10">
-                                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform duration-500">
-                                    <icons.globe className="w-8 h-8" />
-                                </div>
-                                <h3 className="text-3xl font-bold text-foreground mb-4">Our Mission</h3>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    To manufacture and deliver precision-engineered brass components that meet the exact specifications of our global partners, ensuring uncompromising quality, timely delivery, and competitive value through continuous technological advancement.
-                                </p>
-                            </div>
-                        </div>
+                {/* ─── Mission Block ─────────────────────────── */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    {/* Images — left */}
+                    <Fade className="lg:col-span-5" delay={0.1}>
+                        <MissionImageGrid />
                     </Fade>
 
-                    {/* Vision Card */}
-                    <Fade delay={0.3}>
-                        <div className="group relative h-full bg-card rounded-[2rem] p-10 md:p-12 border border-border shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 transition-all duration-500 overflow-hidden">
-                            {/* Decorative background blur */}
-                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 blur-[50px] rounded-full pointer-events-none group-hover:bg-primary/20 transition-colors duration-500" />
-                            
-                            <div className="relative z-10">
-                                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform duration-500">
-                                    <icons.eye className="w-8 h-8" />
-                                </div>
-                                <h3 className="text-3xl font-bold text-foreground mb-4">Our Vision</h3>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    To be the world's most trusted manufacturing partner for critical brass components, setting the global standard for Industry 4.0 integration, zero-defect production, and sustainable manufacturing practices.
-                                </p>
-                            </div>
+                    {/* Text — right */}
+                    <Fade className="lg:col-span-7" delay={0.25}>
+                        <div className="space-y-6">
+                            <TextRevealOnScroll as="h2">Our Mission</TextRevealOnScroll>
+
+                            <p className="text-foreground/70 text-base lg:text-lg leading-relaxed">
+                                To provide exceptional manufacturing services that exceed client expectations
+                                through innovation, quality craftsmanship, and a commitment to sustainability.
+                                We aim to build lasting relationships and create spaces that enhance
+                                communities. We aim to create spaces that inspire and improve the lives of
+                                our clients and communities. Through precision, expertise, and a customer-centric
+                                approach, we strive to exceed expectations in every project. Our
+                                dedication to integrity and excellence drives us to build lasting relationships
+                                and a legacy of trust.
+                            </p>
+
+                            <ul className="space-y-3 pt-2">
+                                <BulletPoint>Fostering Sustainable Growth and Green Development</BulletPoint>
+                                <BulletPoint>Innovating for a Sustainable Future</BulletPoint>
+                                <BulletPoint>Customer-Centric Approach</BulletPoint>
+                                <BulletPoint>Building Stronger Communities</BulletPoint>
+                            </ul>
                         </div>
                     </Fade>
-
                 </div>
+
+                {/* ─── Vision Block ──────────────────────────── */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    {/* Text — left */}
+                    <Fade className="lg:col-span-5 order-2 lg:order-1" delay={0.1}>
+                        <div className="space-y-6">
+                            <TextRevealOnScroll as="h2">Our Vision</TextRevealOnScroll>
+
+                            <p className="text-foreground/70 text-base lg:text-lg leading-relaxed">
+                                At Swastik Brass Components, our vision is to redefine the future of
+                                manufacturing through innovation, sustainability, and excellence. We aim
+                                to create components that not only inspire but also contribute to the
+                                well-being of communities and the environment. By embracing cutting-edge
+                                technology and eco-friendly practices, we strive to lead the industry
+                                toward a greener, smarter future. Our focus is on delivering value, quality,
+                                and longevity in every project we undertake. Together, we envision a world
+                                where manufacturing empowers progress and transforms lives.
+                            </p>
+
+                            <ul className="space-y-3 pt-2">
+                                <BulletPoint>Inspiring Modern Architecture</BulletPoint>
+                                <BulletPoint>Pioneering Sustainable Construction</BulletPoint>
+                            </ul>
+                        </div>
+                    </Fade>
+
+                    {/* Images — right (overlapping stack) */}
+                    <Fade className="lg:col-span-7 order-1 lg:order-2" delay={0.25}>
+                        <VisionImageStack />
+                    </Fade>
+                </div>
+
             </Container>
         </Section>
     );
