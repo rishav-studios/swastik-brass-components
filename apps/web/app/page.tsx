@@ -12,7 +12,7 @@ import { fetchAllSectors } from "@/lib/sectors"
 
 const HomePage = async () => {
   const sectors = await fetchAllSectors();
-
+  console.log(sectors)
   const sectorWithoutGeneral = sectors.filter(sector => sector.slug !== "general")
 
   return (
