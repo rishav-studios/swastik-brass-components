@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
 import { usePageTransition } from "@/components/providers/PageTransitionProvider";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -16,16 +16,16 @@ export const PageTransitionOverlay = () => {
     }, []);
 
     if (!mounted) return null;
-    
+
     return createPortal(
-        <div 
-            className="fixed inset-0 z-[9998] flex pointer-events-none"
+        <div
+            className="fixed inset-0 z-9999 flex pointer-events-none"
         >
             {[...Array(COLUMNS)].map((_, i) => {
                 const isEnter = phase === "enter";
                 const isExit = phase === "exit";
                 const isIdle = phase === "idle";
-                
+
                 let yPosition = "101%";
                 if (isEnter) yPosition = "0%";
                 else if (isExit) yPosition = "-101%";

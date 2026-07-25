@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
     return (
-        <>
+        <main key="terms">
             {/* Hero */}
             <Section className="min-h-[50dvh] lg:py-16 lg:pt-24 flex items-center">
                 <BackgroundNoise />
@@ -109,7 +109,7 @@ export default function TermsPage() {
                     </article>
                 </Container>
             </Section>
-        </>
+        </main>
     );
 }
 

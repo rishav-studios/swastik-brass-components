@@ -1,12 +1,12 @@
 import { z } from "zod";
-import { baseSchema, imageSchema, int8IdSchema } from "./base.schema";
+import { baseSchema, imageSchema } from "./base.schema";
 
 export const productSchema = baseSchema.extend({
     name: z.string().min(1, "Product name is required"),
     slug: z.string().min(1, "Product slug is required"),
-    material_id: int8IdSchema,
-    grade_id: int8IdSchema,
-    sector_id: int8IdSchema,
+    material_id: z.uuidv4(),
+    grade_id: z.uuidv4(),
+    sector_id: z.uuidv4(),
     image_url: imageSchema,
     is_featured: z.boolean(),
 });

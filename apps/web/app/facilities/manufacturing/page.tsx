@@ -6,7 +6,7 @@ import { manufacturingData } from "@/constants/facilities";
 
 export default function ManufacturingPage() {
     return (
-        <>
+        <main key="manufacturing">
             <ManufacturingHero
                 title={manufacturingData.hero.title}
                 subtitle={manufacturingData.hero.subtitle}
@@ -14,7 +14,7 @@ export default function ManufacturingPage() {
                 images={manufacturingData.hero.images}
             />
 
-            <CoreFacilities groups={manufacturingData.coreFacilities} />
+            <CoreFacilities groups={manufacturingData.coreFacilities} id="cnc-machines" />
 
             <ShopFloorGallery images={manufacturingData.shopFloorGallery} />
 
@@ -28,6 +28,6 @@ export default function ManufacturingPage() {
                 }
                 description="Our engineering team is ready to review your requirements and provide a rapid quotation."
             />
-        </>
+        </main>
     );
 }

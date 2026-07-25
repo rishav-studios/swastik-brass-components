@@ -9,7 +9,7 @@ export type Sector = {
     label: string;
     slug: string;
     description: string;
-    stats: { value: string; unit: string }[];
+    stats?: { value: string; unit: string }[];
     frameSrc: {
         dir: string;
         prefix: string;
@@ -93,7 +93,7 @@ export const SectorCard = ({ sector, isVisible }: SectorCardProps) => {
                     <motion.div
                         variants={lineVariants}
                         style={{ originY: 0 }}
-                        className="hidden sm:flex shrink-0 w-[2px] self-stretch bg-primary rounded-full mt-1"
+                        className="hidden sm:flex shrink-0 w-0.5 self-stretch bg-primary rounded-full mt-1"
                     />
 
                     {/* ── Content column ───────────────────────────────── */}
@@ -122,8 +122,8 @@ export const SectorCard = ({ sector, isVisible }: SectorCardProps) => {
                             {sector.description}
                         </motion.p>
 
-                        {/* Stats row */}
-                        <motion.div
+                        {/* Stats row — hidden for now, re-enable when stats data is in Supabase */}
+                        {/* <motion.div
                             variants={childVariants}
                             className="flex gap-6 mb-9"
                         >
@@ -140,7 +140,7 @@ export const SectorCard = ({ sector, isVisible }: SectorCardProps) => {
                                     </span>
                                 </div>
                             ))}
-                        </motion.div>
+                        </motion.div> */}
 
                         {/* CTA */}
                         <motion.div

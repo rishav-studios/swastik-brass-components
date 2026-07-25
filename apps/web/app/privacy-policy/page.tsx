@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
     return (
-        <>
+        <main key="privacy-policy">
             {/* Hero */}
             <Section className="min-h-[50dvh] lg:py-16 lg:pt-24 flex items-center">
                 <BackgroundNoise />
@@ -145,7 +145,7 @@ export default function PrivacyPolicyPage() {
                     </article>
                 </Container>
             </Section>
-        </>
+        </main>
     );
 }
 

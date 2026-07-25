@@ -5,66 +5,9 @@ import Section from "@/components/layout/Section";
 import { Eyebrow, SectionHeader } from "@/components/shared/SectionHeader";
 import { StickyContainer, StickyItem } from "@/components/shared/Sticky";
 import { TextRevealOnScroll } from "@/components/shared/TextReveal";
+import { materials } from "@/constants/materials";
 import MaterialCard from "./MaterialCard";
 
-const materials = [
-    {
-        name: "Brass",
-        imageSrc: "/materials/brass.png",
-        features: [
-            "Lead-free brass (C46500)",
-            "Nickel-plated brass",
-            "High-tensile brass",
-        ],
-        grades: [
-            "C6801 – Bismuth Brass",
-            "C36000 – Free Cutting Brass",
-            "C37700 – Forging Brass",
-            "C38500 – Architectural Brass",
-            "C35300 – High Leaded Brass",
-            "C34500 – Leaded Brass",
-            "C26000 – Cartridge Brass",
-            "CW614N – Free Machining Brass",
-            "CW617N – Forging Brass",
-            "CW602N – DZR Brass",
-            "CW511L – Low Lead Brass",
-            "CW508L – High Purity Brass",
-            "CW510L – Gen. Purpose Brass",
-            "CW721R – Special Brass Alloy",
-
-        ]
-    },
-    {
-        name: "Stainless Steel",
-        imageSrc: "/materials/stainless-steel.png",
-        grades: [
-            "304 Stainless Steel",
-            "316 Stainless Steel",
-            "303 Stainless Steel"
-        ],
-        features: [
-            "High corrosion resistance",
-            "Good mechanical properties",
-            "Heat resistance",
-            "Durable"
-        ]
-    },
-    {
-        name: "Aluminium",
-        imageSrc: "/materials/aluminium.png",
-        grades: [
-            "Aluminium 6061",
-            "Aluminium 6063",
-            "Aluminium 7075"
-        ],
-        features: [
-            "Lightweight",
-            "High strength-to-weight ratio",
-            "Excellent corrosion resistance",
-            "Good thermal conductivity"
-        ]
-    }
-]
 const calculateTopOffset = (index: number) => {
     return 96 + (index * 120);
 }
@@ -103,7 +46,7 @@ const HomeMaterials = () => {
                             </StickyItem>
                         ))
                     }
-                    <StickyItem className="h-24" children=" " />
+                    <StickyItem className="h-24 pointer-events-none" children=" " />
                 </StickyContainer>
             </Container>
         </Section>

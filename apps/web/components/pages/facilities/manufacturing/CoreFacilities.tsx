@@ -22,11 +22,12 @@ type FacilityGroup = {
 
 type CoreFacilitiesProps = {
     groups: FacilityGroup[];
+    id?: string;
 }
 
-const CoreFacilities = ({ groups }: CoreFacilitiesProps) => {
+const CoreFacilities = ({ groups, id }: CoreFacilitiesProps) => {
     return (
-        <Section className="bg-background">
+        <Section className="bg-background" id={id}>
             <BackgroundNoise />
             <BackgroundLines />
             <Container className="space-y-32 relative z-10">

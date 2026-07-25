@@ -46,7 +46,7 @@ export default function QuotePage() {
     };
 
     return (
-        <>
+        <main key="quote">
             {/* Hero Section */}
             <Section className="min-h-[70dvh] lg:py-16 lg:pt-24">
                 <BackgroundNoise />
@@ -172,7 +172,7 @@ export default function QuotePage() {
                                             <Field data-invalid={fieldState.invalid}>
                                                 <FieldLabel>Project Requirements <span className="text-destructive">*</span></FieldLabel>
                                                 <FieldDescription>Please describe your project, required materials, quantities, and tolerances.</FieldDescription>
-                                                <Textarea {...field} placeholder="We need 10,000 units of custom brass fittings as per the attached drawing. Tolerance should be ±0.01mm..." className="min-h-[200px] bg-background resize-y text-base p-4 mt-2" />
+                                                <Textarea {...field} placeholder="We need 10,000 units of custom brass fittings as per the attached drawing. Tolerance should be ±0.01mm..." className="min-h-50 bg-background resize-y text-base p-4 mt-2" />
                                                 <FieldError>{fieldState.error?.message}</FieldError>
                                             </Field>
                                         )}
@@ -250,6 +250,6 @@ export default function QuotePage() {
                     </div>
                 </Container>
             </Section>
-        </>
+        </main>
     );
 }

@@ -5,7 +5,7 @@ import { testingData } from "@/constants/facilities";
 
 export default function TestingPage() {
     return (
-        <>
+        <main key="testing">
             <ManufacturingHero
                 title={testingData.hero.title}
                 subtitle={testingData.hero.subtitle}
@@ -13,7 +13,7 @@ export default function TestingPage() {
                 images={testingData.hero.images}
             />
 
-            <CoreFacilities groups={testingData.coreFacilities} />
+            <CoreFacilities groups={testingData.coreFacilities} id="testing-equipment" />
 
 
             <HomeCTA
@@ -24,6 +24,6 @@ export default function TestingPage() {
                 }
                 description="Our engineering team is ready to review your stringent requirements and provide a rapid quotation."
             />
-        </>
+        </main>
     );
 }

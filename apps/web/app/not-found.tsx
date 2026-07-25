@@ -12,7 +12,7 @@ export default function NotFound() {
             <Container className="relative z-10 flex flex-col items-center text-center gap-8">
                 {/* Large 404 number */}
                 <div className="relative select-none">
-                    <span className="text-[12rem] sm:text-[16rem] md:text-[20rem] font-bold leading-none tracking-tighter text-foreground/[0.03]">
+                    <span className="text-[12rem] sm:text-[16rem] md:text-[20rem] font-bold leading-none tracking-tighter text-foreground/3">
                         404
                     </span>
                     <span className="absolute inset-0 flex items-center justify-center text-7xl sm:text-8xl md:text-9xl font-bold tracking-tight text-foreground">

@@ -8,7 +8,7 @@ import HomeCTA from "@/components/pages/home/cta/HomeCTA"
 
 const AboutPage = () => {
     return (
-        <>
+        <main key="about">
             <AboutHero />
             <AboutOverview />
             <AboutStory />
@@ -16,7 +16,7 @@ const AboutPage = () => {
             <AboutCertificates />
             <AboutJourney />
             <HomeCTA />
-        </>
+        </main>
     )
 }
 

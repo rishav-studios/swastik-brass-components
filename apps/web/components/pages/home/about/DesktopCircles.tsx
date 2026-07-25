@@ -6,19 +6,19 @@ import Circle from "./Circle"
 const DesktopCircles = () => {
 
     const viewPort: ViewportOptions = {
-        amount: 0.7
+        amount: 0.5
     }
 
-    const transition: Transition = {
-        type: "spring",
-        duration: 1.5,
-        stiffness: 100,
-        mass: 0.8,
-    }
-
+    // const transition: Transition = {
+    //     type: "spring",
+    //     duration: 1.5,
+    //     stiffness: 100,
+    //     mass: 0.8,
+    // }
+    const transition: Transition = { type: "spring", bounce: 0.1, duration: 1 }
     return (
         <div
-            className="hidden lg:grid grid-cols-4 xl:grid-cols-3 relative gap-6">
+            className="hidden xl:grid grid-cols-4 xl:grid-cols-3 relative gap-6">
             <motion.div
                 initial={{
                     x: 200,
@@ -95,7 +95,7 @@ const DesktopCircles = () => {
                     <span className="font-semibold text-6xl text-foreground">25 +
                     </span>
                     <p className="text-center">Delivering consistent manufacturing  <br /> excellence since day one.</p>
-                    < img src="/machine-icon.svg" className="size-36 absolute bottom-0" alt="" />
+                    < img src="/machine-icon.svg" className="xl:size-28 2xl:size-36 absolute bottom-0" alt="" />
 
 
                 </Circle>

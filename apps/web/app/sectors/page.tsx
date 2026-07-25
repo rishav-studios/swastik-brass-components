@@ -6,63 +6,15 @@ import { CustomLink } from "@/components/shared/clickables/CustomLink";
 import MouseScrollAnimatedIcon from "@/components/shared/MouseScrollAnimatedIcon";
 import { Description, Eyebrow, SectionHeader } from "@/components/shared/SectionHeader";
 import { TextRevealOnScroll } from "@/components/shared/TextReveal";
+import { fetchAllSectors } from "@/lib/sectors";
 import { icons } from "@swastik/ui";
 import Image from "next/image";
-import { fetchSectors } from "./actions";
-
-// Hardcoded fallback data in case DB is empty
-const FALLBACK_SECTORS = [
-    {
-        name: "Aerospace",
-        slug: "aerospace",
-        home_description: "Precision-engineered brass components built to survive extreme altitudes and vibration.",
-        cover_image_url: "/sectors/aerospace.png",
-        image_url: "/sectors/aerospace.png",
-        display_order: 1
-    },
-    {
-        name: "Railway",
-        slug: "railway",
-        home_description: "Heavy-duty brass fittings for brake systems and pantograph assemblies.",
-        cover_image_url: "/sectors/railway.png",
-        image_url: "/sectors/railway.png",
-        display_order: 2
-    },
-    {
-        name: "Automobile",
-        slug: "automobile",
-        home_description: "High-volume brass components for fuel injection systems and electrical terminals.",
-        cover_image_url: "/sectors/automobile.png",
-        image_url: "/sectors/automobile.png",
-        display_order: 3
-    },
-
-    {
-        name: "Oil & Gas",
-        slug: "oil-gas",
-        home_description: "Explosion-proof brass cable glands and valves for ATEX Zone 1 environments.",
-        cover_image_url: "/sectors/oil-gas.png",
-        image_url: "/sectors/oil-gas.png",
-        display_order: 4
-    },
-    {
-        name: "General",
-        slug: "general",
-        home_description: "General precision brass components, nuts, bolts, and custom machined parts.",
-        cover_image_url: "/sectors/general.png",
-        image_url: "/sectors/general.png",
-        display_order: 5
-    }
-];
 
 export default async function SectorsPage() {
-    let sectorsResponse = await fetchSectors();
-    let sectors = Array.isArray(sectorsResponse) && sectorsResponse.length > 0
-        ? sectorsResponse
-        : FALLBACK_SECTORS;
+    const sectors = await fetchAllSectors();
 
     return (
-        <main className="w-full">
+        <main key="sectors">
             {/* SECTOR DETAIL GRID SECTION */}
             <Section className="min-h-[80dvh] lg:py-16 lg:pt-24">
                 <BackgroundNoise />
@@ -92,7 +44,7 @@ export default async function SectorsPage() {
 
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
-                        {FALLBACK_SECTORS.map((sector, idx) => {
+                        {sectors.map((sector, idx) => {
                             // Create an asymmetric masonry-like layout
                             // Row 1: 7 cols, 5 cols
                             // Row 2: 4 cols, 8 cols
@@ -109,11 +61,11 @@ export default async function SectorsPage() {
                                     variant="custom"
                                     key={sector.slug}
                                     href={`/sectors/${sector.slug}`}
-                                    className={`group relative cursor-pointer overflow-hidden rounded-3xl min-h-[400px] border border-border/50 hover:border-primary/50 transition-colors ${colSpan}`}
+                                    className={`group relative cursor-pointer overflow-hidden rounded-3xl min-h-100 border border-border/50 hover:border-primary/50 transition-colors ${colSpan}`}
                                 >
                                     <div className="absolute inset-0" style={{ viewTransitionName: `sector-image-${sector.slug}` }}>
                                         <Image
-                                            src={sector.image_url || sector.cover_image_url}
+                                            src={sector.image_url as string}
                                             alt={sector.name}
                                             fill
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

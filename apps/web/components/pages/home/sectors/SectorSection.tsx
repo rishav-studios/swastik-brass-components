@@ -40,7 +40,7 @@ export const SectorsSection = ({
                 />
 
                 {/* ── Layer 2: Content card ── */}
-                <div className="absolute inset-0 flex items-center bg-black/60 md:bg-transparent md:bg-linear-to-r from-black/70 via-black/20 to-transparent">
+                <div className="absolute inset-0 flex items-center bg-black/60 md:bg-transparent md:bg-linear-to-r from-black/90 via-black/40 to-transparent">
                     <Container>
                         <SectorCard
                             sector={activeSector}

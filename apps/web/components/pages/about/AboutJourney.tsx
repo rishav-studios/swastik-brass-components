@@ -82,14 +82,14 @@ export const JOURNEY: TimelineEntry[] = [
                         <div className="grid flex-1 grid-cols-1 w-full md:grid-cols-2 gap-3">
                             <div className="overflow-hidden rounded-2xl bg-neutral-800">
                                 <img
-                                    src="https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/cnc.webp"
+                                    src="https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/5-axis-machining-center.webp"
                                     alt="CNC machines"
                                     className="h-36 lg:h-56 w-full object-cover"
                                 />
                             </div>
                             <div className="overflow-hidden rounded-2xl bg-neutral-800">
                                 <img
-                                    src="https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/shop-floor.webp"
+                                    src="https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/shop-floor-1.webp"
                                     alt="Production floor"
                                     className="h-36 lg:h-56 w-full object-cover"
                                 />
@@ -342,7 +342,7 @@ export const JOURNEY: TimelineEntry[] = [
 
 const AboutJourney = () => {
     return (
-        <Section>
+        <Section id="journey">
             <BackgroundNoise />
             <Container className="relative z-10">
                 <SectionHeader>

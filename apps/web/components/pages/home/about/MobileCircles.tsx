@@ -4,7 +4,7 @@ import Circle from "./Circle"
 
 const MobileCircles = () => {
     return (
-        <StickyContainer className="lg:hidden">
+        <StickyContainer className="xl:hidden">
             <StickyItem className="py-4">
                 <Circle className="border border-gray-500 gap-8">
 

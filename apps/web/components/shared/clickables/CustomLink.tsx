@@ -3,7 +3,7 @@ import { icons } from "@swastik/ui";
 import { cn } from "@swastik/ui/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Children, isValidElement, ReactNode, useMemo } from "react";
+import { Children, isValidElement, ReactNode, useMemo, AnchorHTMLAttributes, HTMLAttributes } from "react";
 
 
 export type ClickableVariants =
@@ -22,11 +22,11 @@ type BaseCustomLinkProps = {
     className?: string;
 };
 
-type LinkProps = BaseCustomLinkProps & {
+type LinkProps = BaseCustomLinkProps & AnchorHTMLAttributes<HTMLAnchorElement> & {
     href: string;
 };
 
-type SpanProps = BaseCustomLinkProps & {
+type SpanProps = BaseCustomLinkProps & HTMLAttributes<HTMLSpanElement> & {
     href?: never;
 };
 

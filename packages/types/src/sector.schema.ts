@@ -6,7 +6,7 @@ export const sectorSchema = baseSchema.extend({
     name: z.string().min(1, "Sector name is required"),
     slug: z.string().min(1, "Sector slug is required"),
     home_description: z.string().min(1, "Home Page description is required"),
-    dedicated_description: z.string().nullable().optional(),
+    dedicated_description: z.string(),
     display_order: z.number(),
     image_url: imageSchema,
     cover_image_url: imageSchema,

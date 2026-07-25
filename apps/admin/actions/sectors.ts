@@ -5,6 +5,30 @@ import { CreateSector, createSectorSchema, Sector, UpdateSector, updateSectorSch
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+/**
+ * Triggers on-demand revalidation on the public website.
+ * Called after sector CRUD operations to bust the cached sectors data.
+ */
+async function revalidateWebsite(tag: string = "sectors") {
+    const webUrl = process.env.NEXT_PUBLIC_WEB_URL;
+    const secret = process.env.REVALIDATION_SECRET;
+
+    if (!webUrl || !secret) {
+        console.warn("Missing NEXT_PUBLIC_WEB_URL or REVALIDATION_SECRET — skipping website revalidation.");
+        return;
+    }
+
+    try {
+        await fetch(`${webUrl}/api/revalidate`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ secret, tag }),
+        });
+    } catch (err) {
+        console.error("Failed to revalidate website:", err);
+    }
+}
+
 export async function fetchSectors(): Promise<Sector[] | { error: string }> {
     try {
         const supabase = await createServerSupabaseClient();
@@ -48,6 +72,9 @@ export async function createSector(data: CreateSector): Promise<{ error: string 
         console.error("Unexpected create sector error:", err);
         return { error: "An unexpected error occurred. Please try again." };
     }
+
+    // Revalidate the public website
+    await revalidateWebsite();
 
     // Redirect on success — OUTSIDE try/catch
     redirect("/catalogue/sectors");
@@ -98,6 +125,9 @@ export async function updateSector(id: string, data: UpdateSector): Promise<{ er
         return { error: "An unexpected error occurred. Please try again." };
     }
 
+    // Revalidate the public website
+    await revalidateWebsite();
+
     // Redirect on success
     redirect("/catalogue/sectors");
 }
@@ -117,6 +147,9 @@ export async function deleteSector(id: string): Promise<{ error: string } | void
         }
 
         revalidatePath("/catalogue/sectors");
+
+        // Revalidate the public website
+        await revalidateWebsite();
     } catch (err) {
         console.error("Unexpected delete sector error:", err);
         return { error: "An unexpected error occurred. Please try again." };

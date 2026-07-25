@@ -14,7 +14,8 @@ import Container from "./Container";
 const FOOTER_LINKS = {
     company: [
         { id: "f8f6c2c2-2d6dd7b", label: "About Us", href: "/about" },
-        { id: "f8f6c2c2-2d6dd7c", label: "Facilities", href: "/facilities" },
+        { id: "f8f6c2c2-2d6dd7c", label: "Manufacturing", href: "/facilities/manufacturing" },
+        { id: "f8f6c2c2-2d6ed7c", label: "Testing", href: "/facilities/testing" },
         { id: "f8f6c2c2-2d6dd7d", label: "Contact", href: "/contact" },
 
     ],
@@ -163,6 +164,9 @@ const FooterContactInfo = () => {
                 </a>
                 <a href="tel:+919510626066" className={combinedClasses}>
                     +91 9510626066
+                </a>
+                <a href="tel:+919998872449" className={combinedClasses}>
+                    +91 9998872449
                 </a>
 
 

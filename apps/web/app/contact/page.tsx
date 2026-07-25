@@ -45,7 +45,7 @@ export default function ContactPage() {
     };
 
     return (
-        <>
+        <main key="contact">
             {/* Hero Section */}
             <Section className="min-h-[70dvh] lg:py-16 lg:pt-24">
                 <BackgroundNoise />
@@ -208,7 +208,7 @@ export default function ContactPage() {
                                         render={({ field, fieldState }) => (
                                             <Field data-invalid={fieldState.invalid}>
                                                 <FieldLabel>Message <span className="text-destructive">*</span></FieldLabel>
-                                                <Textarea {...field} placeholder="How can we help you?" className="min-h-[180px] bg-background resize-y p-4" />
+                                                <Textarea {...field} placeholder="How can we help you?" className="min-h-45 bg-background resize-y p-4" />
                                                 <FieldError>{fieldState.error?.message}</FieldError>
                                             </Field>
                                         )}
@@ -232,8 +232,8 @@ export default function ContactPage() {
             </Section>
 
             {/* Map Section */}
-            <section className="w-full h-[560px] relative bg-muted grayscale hover:grayscale-0 transition-all duration-700">
-                <Container className="h-full">
+            <Section className="w-full relative h-[80dvh] min-h-max py-0 lg:py-0 grayscale hover:grayscale-0 transition-all duration-700">
+                <Container className="w-full h-full">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d443.0410738103335!2d70.05297746198046!3d22.41370247097428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1781688094967!5m2!1sen!2sin"
                         width="100%"
@@ -251,7 +251,7 @@ export default function ContactPage() {
                         </p>
                     </div>
                 </Container>
-            </section>
-        </>
+            </Section>
+        </main>
     );
 }

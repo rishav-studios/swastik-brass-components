@@ -1,4 +1,5 @@
 import { createServerClient } from '@supabase/ssr';
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
 import { Database } from './database.types';
 
@@ -85,3 +86,21 @@ export function createCustomServerSupabaseClient(cookieStore: {
 
 // Standard alias for Server Components / Server Actions
 export const createClient = createServerSupabaseClient;
+
+/**
+ * Creates a public Supabase client that does NOT read cookies.
+ * This is safe to use inside Next.js `unstable_cache` or SSG contexts
+ * where dynamic data sources like `cookies()` are not allowed.
+ */
+export function createPublicSupabaseClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error(
+      'Missing Env Variables: NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY must be defined.'
+    );
+  }
+
+  return createSupabaseClient<Database>(supabaseUrl, supabaseAnonKey);
+}

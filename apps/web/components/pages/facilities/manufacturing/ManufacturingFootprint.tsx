@@ -16,7 +16,7 @@ type ManufacturingFootprintProps = {
 
 const ManufacturingFootprint = ({ units }: ManufacturingFootprintProps) => {
     return (
-        <Section className=" bg-zinc-900 text-white">
+        <Section className=" bg-zinc-900 text-white" id="manufacturing-units">
             <Container className="space-y-16">
                 <SectionHeader>
                     <Eyebrow className="mx-auto">manufacturing units</Eyebrow>

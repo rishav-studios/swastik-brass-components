@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function QualityPolicyPage() {
     return (
-        <>
+        <main key="quality-policy">
             {/* Hero */}
             <Section className="min-h-[50dvh] lg:py-16 lg:pt-24 flex items-center">
                 <BackgroundNoise />
@@ -109,7 +109,7 @@ export default function QualityPolicyPage() {
                     </article>
                 </Container>
             </Section>
-        </>
+        </main>
     );
 }
 

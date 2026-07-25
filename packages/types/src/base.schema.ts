@@ -52,18 +52,8 @@ export const imageSchema = z.union([
 
 export type Image = z.infer<typeof imageSchema>;
 
-
-export const int8IdSchema = z
-    .union([z.string(), z.number()])
-    .transform((val) => String(val))
-    .refine((val) => /^\d+$/.test(val), {
-        message: "Invalid ID format: Must be a numeric string",
-    });
-
-export type Int8Id = z.infer<typeof int8IdSchema>;
-
 export const baseSchema = z.object({
-    id: int8IdSchema,
+    id: z.uuidv4(),
     created_at: z.string().optional(),
 })
 

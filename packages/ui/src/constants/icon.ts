@@ -86,8 +86,8 @@ export const icons = {
     plane: PlaneTakeoff,
     train: TrainFront,
     car: Car,
-    flame: Flame
-
+    flame: Flame,
+    testing: FlaskConical
 
 }
 

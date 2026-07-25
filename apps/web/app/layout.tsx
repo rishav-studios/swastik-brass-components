@@ -25,6 +25,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body className={`${googleSansFlex.className}`}>
@@ -36,29 +37,7 @@ export default async function RootLayout({
                 <PageTransitionOverlay />
                 <TrailingCursor />
                 {/* <FirstLoaderAnimation /> */}
-                <Navbar facilityCategories={[
-                  {
-                    display_name: "Manufacturing Facility",
-                    id: "123d",
-                    name: "Manufacturing Facility",
-                    slug: "manufacturing",
-                    seo_metadata: {
-                      meta_title: "",
-                      meta_description: "",
-                    },
-                  },
-                  {
-                    display_name: "Testing Facility",
-                    id: "123f",
-                    name: "Testing Facility",
-                    slug: "testing",
-                    seo_metadata: {
-                      meta_title: "",
-                      meta_description: "",
-                    },
-
-                  }
-                ]} />
+                <Navbar />
                 <div>
                   {children}
                 </div>

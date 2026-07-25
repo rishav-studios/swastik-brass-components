@@ -1,22 +1,31 @@
 import HomeAbout from "@/components/pages/home/about/HomeAbout"
 import HomeCTA from "@/components/pages/home/cta/HomeCTA"
-// import Hero from "@/components/pages/home/hero/Hero"
-import Hero from "@/components/pages/home/hero/Hero2"
+import Exports from "@/components/pages/home/exports/Exports"
+import Hero from "@/components/pages/home/hero/Hero"
 import HomeImpact from "@/components/pages/home/impact/HomeImpact"
 import HomeMaterials from "@/components/pages/home/materials/HomeMaterials"
 import HomeQuality from "@/components/pages/home/quality/HomeQuality"
 import Sectors from "@/components/pages/home/sectors/SectorsSectionMain"
+import { GlobeProvider } from "@/contexts/GlobeContext"
+import { fetchAllSectors } from "@/lib/sectors"
 
 
-const HomePage = () => {
+const HomePage = async () => {
+  const sectors = await fetchAllSectors();
+
+  const sectorWithoutGeneral = sectors.filter(sector => sector.slug !== "general")
+
   return (
     <div className="">
       <Hero />
-      {/* <div className="bg-transparent h-dvh" /> */}
       <HomeAbout />
-      <Sectors />
+      <Sectors dbSectors={sectorWithoutGeneral} />
       <HomeMaterials />
       <HomeImpact />
+      <GlobeProvider>
+
+        <Exports />
+      </GlobeProvider>
       <HomeQuality />
       <HomeCTA />
     </div>

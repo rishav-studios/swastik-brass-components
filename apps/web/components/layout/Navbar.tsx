@@ -1,6 +1,5 @@
 "use client";
 
-import { FacilityCategory } from "@swastik/types";
 import { icons } from "@swastik/ui";
 import {
     DropdownMenu,
@@ -11,7 +10,9 @@ import {
 
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Arrow, CustomLink } from "../shared/clickables/CustomLink";
 import Container from "./Container";
 
@@ -48,18 +49,12 @@ const NAV_LINKS: NavLink[] = [
 const SCROLL_START = 0;
 const SCROLL_END = 150;
 
-export interface NavbarProps {
-    facilityCategories?: FacilityCategory[];
-}
-
 const MobileNavigation = ({
     isOpen,
-    setIsOpen,
-    facilityCategories
+    setIsOpen
 }: {
     isOpen: boolean;
     setIsOpen: (v: boolean) => void;
-    facilityCategories: FacilityCategory[];
 }) => {
     return (
         <AnimatePresence>
@@ -84,7 +79,7 @@ const MobileNavigation = ({
                         className="fixed top-0 right-0 bottom-0 w-full bg-black/95 backdrop-blur-xl z-110 flex flex-col lg:hidden overflow-y-auto"
                     >
                         <div className="flex justify-between items-center p-6 pb-2 border-b border-white/10">
-                            <div style={{ width: 140, height: 40 }} className="relative">
+                            <Link scroll={true} href="/" style={{ width: 140, height: 40 }} className="relative">
                                 <Image
                                     src="/logo.svg"
                                     alt="Swastik Brass Components"
@@ -92,7 +87,7 @@ const MobileNavigation = ({
                                     className="object-contain object-left invert brightness-0"
                                     priority
                                 />
-                            </div>
+                            </Link>
                             <button
                                 onClick={() => setIsOpen(false)}
                                 className="p-2 text-white hover:bg-white/10 rounded-full transition-colors"
@@ -120,16 +115,22 @@ const MobileNavigation = ({
                                                     align="center"
                                                     className="w-[90vw] border-white/10 bg-black/90 backdrop-blur-2xl text-white rounded-2xl overflow-hidden p-2 z-120"
                                                 >
-                                                    {facilityCategories.map(cat => (
-                                                        <DropdownMenuItem key={cat.slug} asChild className="focus:bg-white/10 focus:text-white cursor-pointer rounded-xl mb-1 last:mb-0">
-                                                            <CustomLink href={`/facilities/${cat.slug}`} className="flex items-center gap-4 w-full px-2 py-3">
-                                                                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                                                                    <icons.building2 className="w-5 h-5" />
-                                                                </div>
-                                                                <p className="text-lg font-bold">{cat.display_name || cat.name}</p>
-                                                            </CustomLink>
-                                                        </DropdownMenuItem>
-                                                    ))}
+                                                    <DropdownMenuItem key="manufacturing-facility" asChild className="focus:bg-white/10 focus:text-white cursor-pointer rounded-xl mb-1 last:mb-0">
+                                                        <CustomLink href={`/facilities/manufacturing`} className="flex items-center gap-4 w-full px-2 py-3">
+                                                            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                                                                <icons.building2 className="w-5 h-5" />
+                                                            </div>
+                                                            <p className="text-lg font-bold">Manufacturing Facility</p>
+                                                        </CustomLink>
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem key="testing-facility" asChild className="focus:bg-white/10 focus:text-white cursor-pointer rounded-xl mb-1 last:mb-0">
+                                                        <CustomLink href={`/facilities/testing`} className="flex items-center gap-4 w-full px-2 py-3">
+                                                            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                                                                <icons.testing className="w-5 h-5" />
+                                                            </div>
+                                                            <p className="text-lg font-bold">Testing Facility</p>
+                                                        </CustomLink>
+                                                    </DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>
                                         </motion.div>
@@ -162,7 +163,8 @@ const MobileNavigation = ({
                         >
                             <CustomLink
                                 href="/contact"
-                                variant="outline-black"
+                                variant="outline-white"
+                                className="text-white"
                             >
                                 Contact
                             </CustomLink>
@@ -171,7 +173,6 @@ const MobileNavigation = ({
                                 variant="button-brand"
                             >
                                 Quote Request
-                                <Arrow variant="white" />
                             </CustomLink>
                         </motion.div>
                     </motion.div>
@@ -181,18 +182,22 @@ const MobileNavigation = ({
     );
 };
 
-const Navbar = ({ facilityCategories = [] }: NavbarProps) => {
+const Navbar = () => {
     const { scrollY } = useScroll();
     const [isFacilitiesHovered, setIsFacilitiesHovered] = useState(false);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
 
     // Each value is mapped directly from scroll position — no boolean, no state
     const y = useTransform(scrollY, [SCROLL_START, SCROLL_END], [36, 18]);
+    const pathName = usePathname()
 
+    useEffect(() => {
+        setIsMobileOpen(false);
+    }, [pathName]);
 
     return (
         <>
-            <MobileNavigation isOpen={isMobileOpen} setIsOpen={setIsMobileOpen} facilityCategories={facilityCategories} />
+            <MobileNavigation isOpen={isMobileOpen} setIsOpen={setIsMobileOpen} />
             <motion.nav
                 style={{
                     y,
@@ -201,7 +206,7 @@ const Navbar = ({ facilityCategories = [] }: NavbarProps) => {
             >
                 <Container className="backdrop-blur-md bg-white/80 rounded-full shadow-lg">
                     <div
-                        className=" flex gap-6 xl:gap-0 xl:grid xl:grid-cols-4  pr-2 pl-6 py-2 md:py-1 lg:py-0"
+                        className=" flex gap-6 xl:gap-0 xl:grid xl:grid-cols-4  pr-2 pl-6 py-2 lg:py-1 lg:pr-1"
                     >
                         {/* Logo */}
                         <CustomLink href="/" variant="custom" className="flex items-center lg:col-span-1">
@@ -231,37 +236,47 @@ const Navbar = ({ facilityCategories = [] }: NavbarProps) => {
                                         >
                                             <CustomLink
                                                 href={link.href}
-                                                className="relative text-sm font-medium text-foreground hover:text-primary transition-colors group flex items-center gap-1 py-4"
+                                                className="relative group"
                                             >
                                                 {link.name}
                                                 <icons.chevronDown className={`w-3 h-3 transition-transform duration-300 ${isFacilitiesHovered ? 'rotate-180' : ''}`} />
-                                                <span className="absolute bottom-3 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full rounded-full" />
                                             </CustomLink>
 
                                             {/* Dropdown */}
                                             <motion.div
-                                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                                animate={isFacilitiesHovered ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 10, scale: 0.95 }}
+                                                initial={{ opacity: 0, y: 16, scale: 0.95 }}
+                                                animate={isFacilitiesHovered ? { opacity: 1, y: 4, scale: 1 } : { opacity: 0, y: 16, scale: 0.95 }}
                                                 transition={{ duration: 0.2, ease: "easeOut" }}
                                                 className={`absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white/90 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-xl overflow-hidden ${isFacilitiesHovered ? 'pointer-events-auto' : 'pointer-events-none'}`}
                                                 style={{ transformOrigin: "top center" }}
                                             >
                                                 <div className="p-2 flex flex-col">
-                                                    {facilityCategories.map(cat => (
-                                                        <CustomLink
-                                                            variant="custom"
-                                                            key={cat.slug}
-                                                            href={`/facilities/${cat.slug}`}
-                                                            className="px-4 py-3 hover:bg-black/5 rounded-full transition-colors flex items-center gap-3 group/item"
-                                                        >
-                                                            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-white transition-colors">
-                                                                <icons.building2 className="w-4 h-4" />
-                                                            </div>
-                                                            <div>
-                                                                <p className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">{cat.display_name || cat.name}</p>
-                                                            </div>
-                                                        </CustomLink>
-                                                    ))}
+                                                    <CustomLink
+                                                        variant="custom"
+                                                        key="manufacturing"
+                                                        href={`/facilities/manufacturing`}
+                                                        className="px-4 py-3 hover:bg-black/5 rounded-full transition-colors flex items-center gap-3 group/item"
+                                                    >
+                                                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-white transition-colors">
+                                                            <icons.building2 className="w-4 h-4" />
+                                                        </div>
+                                                        <div>
+                                                            <p className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">Manufacturing Facility</p>
+                                                        </div>
+                                                    </CustomLink>
+                                                    <CustomLink
+                                                        variant="custom"
+                                                        key="testing"
+                                                        href={`/facilities/testing`}
+                                                        className="px-4 py-3 hover:bg-black/5 rounded-full transition-colors flex items-center gap-3 group/item"
+                                                    >
+                                                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-white transition-colors">
+                                                            <icons.testing className="w-4 h-4" />
+                                                        </div>
+                                                        <div>
+                                                            <p className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">Testing facility</p>
+                                                        </div>
+                                                    </CustomLink>
                                                 </div>
                                             </motion.div>
                                         </div>

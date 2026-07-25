@@ -1,60 +1,77 @@
 import Fade from "@/components/animations/Fade"
 import Container from "@/components/layout/Container"
-import { icons } from "@swastik/ui"
-import Link from "next/link"
+import Section from "@/components/layout/Section"
+import { Arrow, CustomLink } from "@/components/shared/clickables/CustomLink"
 import HeroVideo from "./HeroVideo"
-
 
 const Hero = () => {
     return (
-        <div className="h-dvh w-full fixed">
-            <HeroVideo />
-            <div className="absolute w-full h-full bottom-0 flex items-end bg-linear-to-tr from-black/80  to-transparent">
-                <Container className="mb-16">
-                    <div className="space-y-4">
+        <Section className="p-0!  w-full flex">
+            <div className="rounded-xl justify-center p-1 sm:p-3 pr-1! overflow-hidden w-full flex relative">
+                <HeroVideo />
+                <Container className="absolute z-10 bottom-[calc(5px+5vw)]">
+                    <div className="space-y-5">
                         <Fade>
-                            <h1 className="text-8xl font-semibold text-background">
 
-                                Precision Brass
-                                <br />
-                                <span className="text-primary">
-
-                                    Components
-                                </span>
-                                <br />
-                                Built to Last
-                            </h1>
+                            <HeroHeading />
                         </Fade>
-                        <Fade delay={0.5}>
+                        <Fade>
 
-                            <p className="text-background/80 text-lg max-w-lg">
-                                Swastik Brass Components engineers high-performance brass parts for the world's most demanding industries — from aerospace to heavy rail.
-                            </p>
+                            <HeroDescription />
                         </Fade>
-                        <Fade delay={0.6}>
 
-
-                            <div className="flex gap-4">
-                                <Link href={"/sectors"} className="px-6 py-2 text-sm font-semibold text-white border border-primary rounded-full hover:bg-primary/90 transition-all shadow-sm shadow-primary/20 hover:shadow-md hover:shadow-primary/30 active:scale-95 flex items-center gap-2">
-                                    Explore Sectors
-                                </Link>
-                                <Link href={"/quote"} className="pr-3 pl-5 py-2 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary/90 transition-all shadow-sm shadow-primary/20 hover:shadow-md hover:shadow-primary/30 active:scale-95 flex items-center gap-4 group ">
-                                    Get a Quote
-
-                                    <div className="bg-foreground p-1 rounded-full group-hover:-rotate-45 transition-all">
-                                        <icons.arrowRight className="text-background" />
-                                    </div>
-                                </Link>
-                            </div>
-                        </Fade>
+                        <HeroCta />
                     </div>
                 </Container>
+
             </div>
-            <a href="#sectors" className="absolute bottom-4 left-0 right-0 mx-auto flex w-max border border-r-background rounded-full cursor-pointer px-8 py-2">
-                <icons.arrowDown className="animate-bounce text-white" />
-            </a>
+
+        </Section>
+    )
+}
+
+const HeroHeading = () => {
+    return (
+        <h1 className="text-3xl md:text-7xl font-bold text-background flex">
+            Precision Brass <br />Components <br /> Built to Last
+        </h1>
+    )
+}
+const HeroDescription = () => {
+    return (
+        <p className="text-muted text-xs min-[468px]:text-sm sm:text-[16px] max-w-lg">
+            Swastik Brass Components engineers high-performance brass parts for the world's most demanding industries — from aerospace to heavy rail.
+        </p>
+    )
+}
+
+const HeroCta = () => {
+    return (
+        <div className="hidden sm:flex flex-col sm:flex-row gap-4">
+            <Fade className="flex">
+
+                <CustomLink
+                    href={"/sectors"}
+                    variant="outline-brand"
+                    className="text-background"
+                >
+                    Explore Sectors
+                </CustomLink>
+            </Fade>
+            <Fade delay={0.2}>
+
+                <CustomLink
+                    href={"/quote"}
+                    variant="button-brand"
+                    className="w-max"
+                >
+                    Get a Quote
+                    <Arrow variant="black" />
+                </CustomLink>
+            </Fade>
         </div>
     )
 }
+
 
 export default Hero

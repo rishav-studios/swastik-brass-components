@@ -62,8 +62,14 @@ const HomeAbout = () => {
                                     </CustomLink>
                                 </Fade>
                                 <Fade delay={0.2} className="flex w-max">
-                                    <CustomLink variant="hover-underline" href={"/quote"} className="text-primary">
-                                        Download brochure
+                                    <CustomLink
+                                        target="_blank"
+                                        href="https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/SWASTIK_BRASS_COMPONENTS_CATALOGUE.pdf"
+                                        variant="hover-underline"
+                                        className="text-primary"
+                                        download
+                                    >
+                                        download brochure
                                         <icons.download />
                                     </CustomLink>
                                 </Fade>

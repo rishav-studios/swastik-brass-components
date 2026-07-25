@@ -10,7 +10,7 @@ type ShopFloorGalleryProps = {
 
 const ShopFloorGallery = ({ images }: ShopFloorGalleryProps) => {
     return (
-        <Section className="bg-zinc-950 text-white">
+        <Section className="bg-zinc-950 text-white" id="shop-floor">
             <Container className="space-y-12">
                 <SectionHeader>
                     <Eyebrow>Shop Floor</Eyebrow>

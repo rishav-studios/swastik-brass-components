@@ -32,7 +32,7 @@ const HomeQuality = () => {
         <Section className="bg-background overflow-hidden">
             <BackgroundNoise />
             <BackgroundLines className="w-[90%] mx-auto" />
-            <Container>
+            <Container className="relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                     {/* Left: Content & Features */}
@@ -74,7 +74,7 @@ const HomeQuality = () => {
                         <Fade delay={0.4} threshold={0.2}>
                             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50">
                                 <ImageReveal
-                                    src="/quality-inspection.png"
+                                    src="https://jpouktmcsliceesoassj.supabase.co/storage/v1/object/public/public_assets/general/quality-inspection.webp"
                                     alt="Precision Quality Inspection"
                                     className="w-full h-full"
                                     aspectRatio="aspect-square lg:aspect-[4/5]"

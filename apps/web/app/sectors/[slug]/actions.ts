@@ -1,7 +1,7 @@
 "use server"
 
 import { createServerSupabaseClient } from "@swastik/supabase";
-import { Sector, Product } from "@swastik/types";
+import { Product, Sector } from "@swastik/types";
 
 export async function getSectorBySlug(slug: string): Promise<Sector | null> {
     try {
@@ -24,7 +24,7 @@ export async function getSectorBySlug(slug: string): Promise<Sector | null> {
     }
 }
 
-export async function getProductsBySector(sectorId: number): Promise<Product[]> {
+export async function getProductsBySector(sectorId: string): Promise<Product[]> {
     try {
         const supabase = await createServerSupabaseClient();
         const { data, error } = await supabase

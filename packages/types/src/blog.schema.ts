@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { baseSchema, imageSchema, int8IdSchema } from "./base.schema";
+import { baseSchema, imageSchema } from "./base.schema";
 import { seoSchema } from "./seo.schema";
 
 export const blogCategorySchema = baseSchema.extend({
@@ -26,7 +26,7 @@ export const blogSchema = baseSchema.extend({
     author: z.string().min(1, "Author is required"),
     title: z.string().min(1, "Title is required"),
     banner_url: imageSchema,
-    category_id: int8IdSchema,
+    category_id: z.uuidv4(),
     blocks: z.any(), // jsonb
     time_to_read: z.number(), // numeric
     seo_metadata: seoSchema

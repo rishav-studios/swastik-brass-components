@@ -150,3 +150,7 @@
   background-color: var(--primary);
   color: var(--primary-foreground);
 }
+
+html {
+  scroll-behavior: smooth;
+}
