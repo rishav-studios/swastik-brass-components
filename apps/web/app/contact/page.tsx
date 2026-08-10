@@ -79,8 +79,8 @@ export default function ContactPage() {
                                 </h3>
                                 <div className="pl-12">
                                     <p className="text-muted-foreground leading-relaxed text-lg">
-                                        Plot No. 3436, Phase III,<br />
-                                        G.I.D.C., Dared,<br />
+                                        Plot No. 3884, Y - Road,<br />
+                                        Phase II, G.I.D.C., Dared,<br />
                                         Jamnagar - 361004, Gujarat, India
                                     </p>
                                 </div>
@@ -98,14 +98,26 @@ export default function ContactPage() {
                                 <div className="space-y-4 pl-12">
                                     <div className="flex items-center gap-3">
                                         <icons.mail className="w-5 h-5 text-muted-foreground" />
-                                        <a href="mailto:info@swastikbrass.com" className="text-foreground hover:text-primary transition-colors text-lg font-medium">
-                                            info@swastikbrass.com
+                                        <a href="mailto:info@swastikbrasscomponents.com" className="text-foreground hover:text-primary transition-colors text-lg font-medium">
+                                           info@swastikbrasscomponents.com
+                                        </a>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <icons.mail className="w-5 h-5 text-muted-foreground" />
+                                        <a href="mailto:savan@swastikbrasscomponents.com" className="text-foreground hover:text-primary transition-colors text-lg font-medium">
+                                            savan@swastikbrasscomponents.com
                                         </a>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <icons.phone className="w-5 h-5 text-muted-foreground" />
-                                        <a href="tel:+919876543210" className="text-foreground hover:text-primary transition-colors text-lg font-medium">
-                                            +91 98765 43210
+                                        <a href="tel:+919510626066" className="text-foreground hover:text-primary transition-colors text-lg font-medium">
+                                            +91 95106 26066
+                                        </a>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <icons.phone className="w-5 h-5 text-muted-foreground" />
+                                        <a href="tel:+919998872449" className="text-foreground hover:text-primary transition-colors text-lg font-medium">
+                                            +91 99988 72449
                                         </a>
                                     </div>
                                 </div>
